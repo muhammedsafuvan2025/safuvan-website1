@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!-- Futuristic Portfolio with Animations and Dynamic Elements -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammed Safuvan - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="animated-background"></div>
+    <div class="floating-elements" id="floatingElements"></div>
+    
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar" id="scrollProgress"></div>
+    </div>
+
+    <div class="navbar-trigger"></div>
+    <nav class="navbar glass-effect">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="#hero">MS</a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact" >Contact</a></li>
+            </ul>
+            <div class="nav-toggle" onclick="toggleNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <button class="theme-toggle glass-effect" onclick="toggleTheme()">
+        <div class="theme-toggle-icon">🌓</div>
+        <div class="theme-toggle-ring"></div>
+    </button>
+    <div class="hero section-transition" id="hero">
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+            <div class="hero-glow"></div>
+        </div>
+        <div class="hero-content">
+            <div class="profile-container">
+                <img src="profile.jpg" alt="Muhammed Safuvan" class="hero-image" id="heroImage">
+                <div class="profile-ring"></div>
+            </div>
+            <h1 class="title glitch-text" data-text="Muhammed Safuvan">Muhammed Safuvan</h1>
+            <p class="subtitle">
+                <span class="typing-text"></span>
+                <span class="cursor">|</span>
+            </p>
+            <div class="scroll-indicator" id="scrollIndicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <div class="arrows">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="bio-section section-transition">
+            <div class="bio-container glass-effect enhanced-card">
+                <p class="bio-text">
+                    <span class="bio-line">I'm a tech enthusiast passionate about AWS, data analysis, and full-stack development.</span>
+                    <span class="bio-line">With strong Python skills, I love solving problems and building seamless digital experiences.</span>
+                </p>
+            </div>
+        </section>
+        
+        <section class="projects section-transition" id="projects">
+            <div class="project-card enhanced-card glass-effect" onclick="expandCard(this)">
+                <h3>E-Commerce Platform</h3>
+                <p>A full-stack e-commerce solution with real-time inventory management</p>
+                <div class="tech-stack">
+                    <span><img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React logo" width="20" height="20"> React</span>
+                    <span><img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node.js logo" width="20" height="20"> Node.js</span>
+                    <span><img src="https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" alt="MongoDB logo" width="20" height="20"> MongoDB</span>
+                </div>
+            </div>
+            <div class="project-card enhanced-card glass-effect" onclick="expandCard(this)">
+                <h3>Social Media Dashboard</h3>
+                <p>Analytics and management platform for social media accounts</p>
+                <div class="tech-stack">
+                    <span><img src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="Vue.js logo" width="20" height="20"> Vue.js</span>
+                    <span><img src="https://cdn.worldvectorlogo.com/logos/firebase-1.svg" alt="Firebase logo" width="20" height="20"> Firebase</span>
+                </div>
+            </div>
+            <div class="project-card enhanced-card glass-effect" onclick="expandCard(this)">
+                <h3>AI Chat Application</h3>
+                <p>Real-time chat application with AI-powered responses</p>
+                <div class="tech-stack">
+                    <span><img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python logo" width="20" height="20"> Python</span>
+                    <span><img src="https://cdn.worldvectorlogo.com/logos/tensorflow-2.svg" alt="TensorFlow logo" width="20" height="20"> TensorFlow</span>
+                    <span><img src="https://cdn.worldvectorlogo.com/logos/websocket.svg" alt="WebSocket logo" width="20" height="20"> WebSocket</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills section-transition">
+            <h2>Skills</h2>
+            <div class="skill-list">
+                <span class="skill-item" data-progress="90">
+                    <img src="https://cdn.worldvectorlogo.com/logos/html-1.svg" alt="HTML5 logo" width="24" height="24">
+                    <span>HTML5</span>
+                    <div class="skill-progress"></div>
+                </span>
+                <span class="skill-item" data-progress="85">
+                    <img src="https://cdn.worldvectorlogo.com/logos/css-3.svg" alt="CSS3 logo" width="24" height="24">
+                    <span>CSS3</span>
+                    <div class="skill-progress"></div>
+                </span>
+                <span class="skill-item" data-progress="80">
+                    <img src="https://cdn.worldvectorlogo.com/logos/javascript-1.svg" alt="JavaScript logo" width="24" height="24">
+                    <span>JavaScript</span>
+                    <div class="skill-progress"></div>
+                </span>
+                <span class="skill-item" data-progress="75">
+                    <img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React logo" width="24" height="24">
+                    <span>React</span>
+                    <div class="skill-progress"></div>
+                </span>
+                <span class="skill-item" data-progress="70">
+                    <img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node.js logo" width="24" height="24">
+                    <span>Node.js</span>
+                    <div class="skill-progress"></div>
+                </span>
+                <span class="skill-item" data-progress="85">
+                    <img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python logo" width="24" height="24">
+                    <span>Python</span>
+                    <div class="skill-progress"></div>
+                </span>
+                <span class="skill-item" data-progress="65">
+                    <img src="https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" alt="MongoDB logo" width="24" height="24">
+                    <span>MongoDB</span>
+                    <div class="skill-progress"></div>
+                </span>
+                <span class="skill-item" data-progress="70">
+                    <img src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" alt="AWS logo" width="24" height="24">
+                    <span>AWS</span>
+                    <div class="skill-progress"></div>
+                </span>
+            </div>
+            <div class="resume-section">
+                <button class="resume-btn" onclick="window.open('resume.pdf', '_blank')">
+                    
+                    <span>View Resume</span>
+                </button>
+            </div>
+        </section>
+    </main>
+    <footer class="glass-effect">
+        <div class="terminal-text" id="terminal">
+            <span class="prompt">$</span>
+            <span class="command"></span>
+        </div>
+        <p class="copyright">
+            <span class="copyright-symbol">&copy;</span>
+            <span class="copyright-year">2025</span>
+            <span class="copyright-divider">|</span>
+            <span class="copyright-name">Muhammed Safuvan</span>
+            <span class="copyright-text">All rights reserved</span>
+        </p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/muhammed-safuvan-b81312189/" target="_blank" class="social-icon">
+                <img src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" alt="LinkedIn" width="30" height="30">
+            </a>
+            <a href="https://github.com/your-username" target="_blank" class="social-icon">
+                <img src="https://cdn.worldvectorlogo.com/logos/github-icon-1.svg" alt="GitHub" width="30" height="30">
+            </a>
+            <a href="https://www.instagram.com/safuvan_muhmd/#" target="_blank" class="social-icon">
+                <img src="https://cdn.worldvectorlogo.com/logos/instagram-2016-5.svg" alt="Instagram" width="30" height="30">
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Add floating elements
+        function createFloatingElements() {
+            const container = document.getElementById('floatingElements');
+            for (let i = 0; i < 20; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                element.style.setProperty('--move-x', `${Math.random() * 200 - 100}px`);
+                element.style.setProperty('--move-y', `${Math.random() * 200 - 100}px`);
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.top = `${Math.random() * 100}%`;
+                container.appendChild(element);
+            }
+        }
+
+        // Update scroll progress
+        function updateScrollProgress() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            scrollProgress.style.setProperty('--scroll', `${scrollPercent}%`);
+        }
+
+        // Initialize
+        createFloatingElements();
+        window.addEventListener('scroll', updateScrollProgress);
+    </script>
+</body>
+</html>
