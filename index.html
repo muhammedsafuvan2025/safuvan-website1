@@ -1,216 +1,1673 @@
 <!DOCTYPE html>
-<!-- Futuristic Portfolio with Animations and Dynamic Elements -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammed Safuvan - Portfolio</title>
+    <title>Safe Surf Extension</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    <div class="animated-background"></div>
-    <div class="floating-elements" id="floatingElements"></div>
-    
-    <div class="scroll-progress">
-        <div class="scroll-progress-bar" id="scrollProgress"></div>
-    </div>
-
-    <div class="navbar-trigger"></div>
-    <nav class="navbar glass-effect">
-        <div class="container">
-            <div class="nav-brand">
-                <a href="#hero">MS</a>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-gray-900 shadow-lg z-50" id="navbar">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="logo.PNG" alt="Safe Surf Logo" class="h-10 mr-3">
+                <span class="text-2xl font-bold text-red-600">Safe Surf</span>
             </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact" >Contact</a></li>
-            </ul>
-            <div class="nav-toggle" onclick="toggleNav()">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="hidden md:flex space-x-8">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#demo" class="nav-link">Demo</a>
+                <a href="#testimonials" class="nav-link">Reviews</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 bg-gray-900">
+                <a href="#hero" class="mobile-nav-link">Home</a>
+                <a href="#about" class="mobile-nav-link">About</a>
+                <a href="#features" class="mobile-nav-link">Features</a>
+                <a href="#demo" class="mobile-nav-link">Demo</a>
+                <a href="#testimonials" class="mobile-nav-link">Reviews</a>
             </div>
         </div>
     </nav>
 
-    <button class="theme-toggle glass-effect" onclick="toggleTheme()">
-        <div class="theme-toggle-icon">🌓</div>
-        <div class="theme-toggle-ring"></div>
-    </button>
-    <div class="hero section-transition" id="hero">
-        <div class="hero-background">
-            <div class="hero-particles"></div>
-            <div class="hero-glow"></div>
-        </div>
-        <div class="hero-content">
-            <div class="profile-container">
-                <img src="profile.jpg" alt="Muhammed Safuvan" class="hero-image" id="heroImage">
-                <div class="profile-ring"></div>
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="hero-bg absolute inset-0 z-0"></div>
+        <div class="container mx-auto px-4 z-10 text-center" data-aos="fade-up" data-aos-duration="1000">
+            <img src="logo.PNG" alt="Safe Surf Logo" class="w-32 h-32 mx-auto mb-6" data-aos="zoom-in" data-aos-delay="300">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-gradient">Safe Surf Extension</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Understand website privacy policies at a glance with AI-powered scanning and analysis</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#features" class="btn-primary">Explore Features</a>
+                <a href="#download" class="btn-secondary">Download Now</a>
             </div>
-            <h1 class="title glitch-text" data-text="Muhammed Safuvan">Muhammed Safuvan</h1>
-            <p class="subtitle">
-                <span class="typing-text"></span>
-                <span class="cursor">|</span>
-            </p>
-            <div class="scroll-indicator" id="scrollIndicator">
-                <div class="mouse">
-                    <div class="wheel"></div>
-                </div>
-                <div class="arrows">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title" data-aos="fade-up">Meet Our Team</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">The brilliant minds behind Safe Surf Extension</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                <div class="team-member same-size" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-photo-wrapper">
+                        <img src="saf.jpg" alt="Muhammed Safuvan" class="team-photo">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#" class="team-social-link"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="team-social-link"><i class="fab fa-github"></i></a>
+                                <a href="#" class="team-social-link"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold">M. Safuvan</h3>
+                    <p class="text-sm text-gray-400">Lead Developer</p>
                 </div>
                 
+                <div class="team-member same-size" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-photo-wrapper">
+                        <img src="anandu.jpeg" alt="Anandu Ajith" class="team-photo">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#" class="team-social-link"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="team-social-link"><i class="fab fa-github"></i></a>
+                                <a href="#" class="team-social-link"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold">Anandu Ajith</h3>
+                    <p class="text-sm text-gray-400">Backend Engineer</p>
+                </div>
+                
+                <div class="team-member same-size" data-aos="fade-up" data-aos-delay="400">
+                    <div class="team-photo-wrapper">
+                        <img src="anson.jpg" alt="Anson Sunny" class="team-photo">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#" class="team-social-link"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="team-social-link"><i class="fab fa-github"></i></a>
+                                <a href="#" class="team-social-link"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold">Anson Sunny</h3>
+                    <p class="text-sm text-gray-400">Security Specialist</p>
+                </div>
+                
+                <div class="team-member same-size" data-aos="fade-up" data-aos-delay="500">
+                    <div class="team-photo-wrapper">
+                        <img src="alex.jpg" alt="Alex John" class="team-photo">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#" class="team-social-link"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="team-social-link"><i class="fab fa-github"></i></a>
+                                <a href="#" class="team-social-link"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold">Alex John</h3>
+                    <p class="text-sm text-gray-400">UX Designer</p>
+                </div>
+                
+                <div class="team-member same-size" data-aos="fade-up" data-aos-delay="600">
+                    <div class="team-photo-wrapper">
+                        <img src="ravindra.jpg" alt="Ravindra" class="team-photo">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#" class="team-social-link"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="team-social-link"><i class="fab fa-github"></i></a>
+                                <a href="#" class="team-social-link"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold">Ravindra</h3>
+                    <p class="text-sm text-gray-400">QA Engineer</p>
+                </div>
+                
+                <div class="team-member same-size" data-aos="fade-up" data-aos-delay="700">
+                    <div class="team-photo-wrapper">
+                        <img src="basil.jpg" alt="Basil Joseph" class="team-photo">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#" class="team-social-link"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="team-social-link"><i class="fab fa-github"></i></a>
+                                <a href="#" class="team-social-link"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold">Basil Joseph</h3>
+                    <p class="text-sm text-gray-400">Product Manager</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <main class="container">
-        <section class="bio-section section-transition">
-            <div class="bio-container glass-effect enhanced-card">
-                <p class="bio-text">
-                    <span class="bio-line">I'm a tech enthusiast passionate about AWS, data analysis, and full-stack development.</span>
-                    <span class="bio-line">With strong Python skills, I love solving problems and building seamless digital experiences.</span>
-                </p>
-            </div>
-        </section>
-        
-        <section class="projects section-transition" id="projects">
-            <div class="project-card enhanced-card glass-effect" onclick="expandCard(this)">
-                <h3>E-Commerce Platform</h3>
-                <p>A full-stack e-commerce solution with real-time inventory management</p>
-                <div class="tech-stack">
-                    <span><img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React logo" width="20" height="20"> React</span>
-                    <span><img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node.js logo" width="20" height="20"> Node.js</span>
-                    <span><img src="https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" alt="MongoDB logo" width="20" height="20"> MongoDB</span>
+    <!-- Features Section -->
+    <section id="features" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title" data-aos="fade-up">Powerful Features</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Discover what makes Safe Surf exceptional</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Privacy Policy Scanner</h3>
+                    <p>Automatically detects and scans privacy policies on websites you visit to identify potential concerns.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Fast and Lightweight</h3>
+                    <p>Minimal impact on browser performance, keeping your browsing experience smooth and efficient.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">AI-Powered Summaries</h3>
+                    <p>Utilizes OpenAI API to generate concise, easy-to-understand summaries of complex privacy policies.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Risk Highlighting</h3>
+                    <p>Automatically highlights concerning terms and privacy risks in policy documents for quick identification.</p>
                 </div>
             </div>
-            <div class="project-card enhanced-card glass-effect" onclick="expandCard(this)">
-                <h3>Social Media Dashboard</h3>
-                <p>Analytics and management platform for social media accounts</p>
-                <div class="tech-stack">
-                    <span><img src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="Vue.js logo" width="20" height="20"> Vue.js</span>
-                    <span><img src="https://cdn.worldvectorlogo.com/logos/firebase-1.svg" alt="Firebase logo" width="20" height="20"> Firebase</span>
-                </div>
-            </div>
-            <div class="project-card enhanced-card glass-effect" onclick="expandCard(this)">
-                <h3>AI Chat Application</h3>
-                <p>Real-time chat application with AI-powered responses</p>
-                <div class="tech-stack">
-                    <span><img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python logo" width="20" height="20"> Python</span>
-                    <span><img src="https://cdn.worldvectorlogo.com/logos/tensorflow-2.svg" alt="TensorFlow logo" width="20" height="20"> TensorFlow</span>
-                    <span><img src="https://cdn.worldvectorlogo.com/logos/websocket.svg" alt="WebSocket logo" width="20" height="20"> WebSocket</span>
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="skills section-transition">
-            <h2>Skills</h2>
-            <div class="skill-list">
-                <span class="skill-item" data-progress="90">
-                    <img src="https://cdn.worldvectorlogo.com/logos/html-1.svg" alt="HTML5 logo" width="24" height="24">
-                    <span>HTML5</span>
-                    <div class="skill-progress"></div>
-                </span>
-                <span class="skill-item" data-progress="85">
-                    <img src="https://cdn.worldvectorlogo.com/logos/css-3.svg" alt="CSS3 logo" width="24" height="24">
-                    <span>CSS3</span>
-                    <div class="skill-progress"></div>
-                </span>
-                <span class="skill-item" data-progress="80">
-                    <img src="https://cdn.worldvectorlogo.com/logos/javascript-1.svg" alt="JavaScript logo" width="24" height="24">
-                    <span>JavaScript</span>
-                    <div class="skill-progress"></div>
-                </span>
-                <span class="skill-item" data-progress="75">
-                    <img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React logo" width="24" height="24">
-                    <span>React</span>
-                    <div class="skill-progress"></div>
-                </span>
-                <span class="skill-item" data-progress="70">
-                    <img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node.js logo" width="24" height="24">
-                    <span>Node.js</span>
-                    <div class="skill-progress"></div>
-                </span>
-                <span class="skill-item" data-progress="85">
-                    <img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python logo" width="24" height="24">
-                    <span>Python</span>
-                    <div class="skill-progress"></div>
-                </span>
-                <span class="skill-item" data-progress="65">
-                    <img src="https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" alt="MongoDB logo" width="24" height="24">
-                    <span>MongoDB</span>
-                    <div class="skill-progress"></div>
-                </span>
-                <span class="skill-item" data-progress="70">
-                    <img src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" alt="AWS logo" width="24" height="24">
-                    <span>AWS</span>
-                    <div class="skill-progress"></div>
-                </span>
-            </div>
-            <div class="resume-section">
-                <button class="resume-btn" onclick="window.open('resume.pdf', '_blank')">
+    <!-- Security Visualizer Section -->
+    <section id="security-visualizer" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title" data-aos="fade-up">See It In Action</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Watch how Safe Surf scans and analyzes privacy policies for you</p>
+            
+            <div class="visualizer-container mt-12" data-aos="zoom-in">
+                <div class="visualizer-browser">
+                    <div class="browser-header">
+                        <div class="browser-controls">
+                            <span class="browser-dot"></span>
+                            <span class="browser-dot"></span>
+                            <span class="browser-dot"></span>
+                        </div>
+                        <div class="browser-address">
+                            <div class="secure-badge">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <span>https://</span>example.com/privacy-policy
+                        </div>
+                        <div class="browser-safe-badge">
+                            <img src="logo.PNG" alt="Safe Surf" class="h-6">
+                        </div>
+                    </div>
+                    <div class="browser-viewport">
+                        <div class="privacy-document">
+                            <div class="document-content">
+                                <div class="document-line"><span class="document-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></div>
+                                <div class="document-line"><span class="document-text">Nullam eget felis eget nunc lobortis mattis.</span></div>
+                                <div class="document-line"><span class="document-text">Pellentesque habitant morbi tristique senectus.</span></div>
+                                <div class="document-line"><span class="document-text">We collect and <span class="keyword-risk">share</span> your <span class="keyword-risk">personal data</span> with <span class="keyword-risk">third parties</span>.</span></div>
+                                <div class="document-line"><span class="document-text">Ut enim ad minim veniam, quis nostrud exercitation.</span></div>
+                                <div class="document-line"><span class="document-text">We may use your <span class="keyword-risk">browsing history</span> for <span class="keyword-risk">targeted advertising</span>.</span></div>
+                                <div class="document-line"><span class="document-text">Duis aute irure dolor in reprehenderit in voluptate.</span></div>
+                                <div class="document-line"><span class="document-text">Excepteur sint occaecat cupidatat non proident.</span></div>
+                                <div class="document-line"><span class="document-text">Your data may be <span class="keyword-risk">stored indefinitely</span> and <span class="keyword-risk">sold to partners</span>.</span></div>
+                            </div>
+                            <div class="ai-summary">
+                                <div class="summary-header">
+                                    <svg class="openai-logo" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M19.7986 10.1025C20.0256 9.32806 20.0575 8.51253 19.892 7.7232C19.3999 5.48265 17.7388 3.69628 15.5354 3.03462C13.3319 2.37296 10.9878 2.91542 9.344 4.46764C8.6985 4.05542 7.97193 3.79993 7.21427 3.71822C4.97833 3.459 2.86612 4.80987 2.00799 6.87661C1.14987 8.94334 1.65864 11.3524 3.27604 12.8283C3.049 13.6026 3.01716 14.4182 3.18264 15.2076C3.67476 17.4481 5.33582 19.2345 7.53929 19.8961C9.74276 20.5578 12.0869 20.0153 13.7307 18.4631C14.3762 18.8753 15.1027 19.1308 15.8604 19.2125C18.0963 19.4717 20.2085 18.1208 21.0667 16.0541C21.9248 13.9874 21.416 11.5783 19.7986 10.1025ZM15.751 18.0323C14.7356 17.9844 13.7757 17.5374 13.0635 16.7898C13.0981 16.7625 13.1534 16.7234 13.2179 16.6773L15.868 14.9266C16.0391 14.8167 16.147 14.6253 16.147 14.4175V10.1435L17.528 10.9475C17.5372 10.9532 17.5445 10.9614 17.5489 10.9712C17.5532 10.981 17.5543 10.9919 17.552 11.0025V14.4175C17.549 16.4906 16.8099 17.8995 15.751 18.0323ZM4.67273 12.0275C4.22391 11.3518 4.01346 10.5451 4.07461 9.73501C4.07885 9.77148 4.08944 9.82198 4.10281 9.87939L5.08135 13.1373C5.12046 13.2992 5.23395 13.4338 5.38951 13.5048L9.53491 15.6878V18.1227C9.52511 18.1325 9.51266 18.1399 9.49889 18.1441C9.48512 18.1482 9.47052 18.1489 9.45635 18.1461C7.67289 17.6102 6.0796 16.3067 5.24273 14.5648C4.95705 13.7917 4.80077 12.9781 4.78025 12.1561C4.77966 12.1113 4.69945 12.0664 4.67273 12.0275ZM16.9178 9.06676L13.2051 7.10639C13.0474 7.01576 12.8576 7.01576 12.6998 7.10639L8.98711 9.06676V5.38173C8.98711 5.37014 8.99154 5.35897 8.99968 5.35058C8.99968 5.3422 9.004 5.33537 9.01084 5.33092C10.0357 4.89077 11.1648 4.78017 12.2578 5.01073C13.9635 5.36926 15.431 6.47698 16.1803 8.01726C16.2894 8.22901 16.6173 8.80973 16.8913 9.43048C16.9031 9.45698 16.9148 9.47939 16.9178 9.06676ZM7.55334 12.6492L6.30873 8.38642C6.28814 8.32657 6.25617 8.27192 6.21426 8.22517C6.21426 8.2168 6.20993 8.20998 6.2031 8.20552C6.2031 8.20107 6.19867 8.19833 6.19281 8.19833C5.20973 8.64089 4.44148 9.48701 4.08294 10.5291C3.72441 11.5713 3.80763 12.7152 4.31553 13.6939C4.32237 13.7053 4.32627 13.7177 4.32715 13.7306C4.32715 13.7435 4.32413 13.7564 4.31847 13.7676C4.31847 13.7775 4.31994 13.7866 4.32715 13.8089L4.3369 13.8284C4.41564 13.9804 4.51392 14.1244 4.6254 14.2548C5.08427 14.8311 5.69165 15.252 6.37335 15.4608L7.38662 15.8166C7.51247 15.8633 7.65105 15.8427 7.76194 15.76L11.5994 13.7623V12.0211C11.5994 11.8119 11.7087 11.6207 11.8797 11.5081L12.1577 11.3444L7.80381 8.85361C7.65251 8.76686 7.46759 8.76686 7.31629 8.85361L5.83642 9.73304C5.83447 9.73676 5.83349 9.74089 5.83349 9.74514C5.83349 9.74939 5.83447 9.75354 5.83642 9.75726L7.55334 12.6492ZM13.7356 11.3431L17.2381 9.30623L17.2433 9.30307C17.2657 9.28967 17.2827 9.26936 17.292 9.24582C17.3012 9.22228 17.3021 9.19683 17.2946 9.17267C17 8.54804 16.6327 7.96339 16.1998 7.43914C15.3531 6.34376 14.1644 5.558 12.813 5.219C11.8452 4.97723 10.8362 4.97723 9.86837 5.219C9.85311 5.219 9.83834 5.22397 9.82668 5.2332C9.81503 5.24242 9.80723 5.25536 9.80481 5.27001V9.55504C9.80481 9.76329 9.9127 9.9547 10.0835 10.0677L14.6242 12.6492C14.6399 12.6583 14.6636 12.6742 14.6917 12.6919L17.5516 14.3353C17.5694 14.3455 17.5896 14.3514 17.6102 14.3524C17.6309 14.3533 17.6515 14.3493 17.6703 14.3407C17.6891 14.332 17.7053 14.3189 17.7178 14.3027C17.7302 14.2864 17.7386 14.2674 17.7421 14.2473C17.8938 13.1989 17.713 12.1277 17.2368 11.2041C17.2329 11.1944 17.2266 11.1855 17.2182 11.1781C17.2099 11.1707 17.2 11.1651 17.1891 11.1616C17.1783 11.1581 17.1667 11.1569 17.1554 11.1582C17.1441 11.1596 17.1332 11.1634 17.1238 11.1692L16.0534 11.7998L13.7356 11.3431ZM18.0074 13.8284C17.9983 13.8172 17.9864 13.8089 17.9719 13.8039C17.9598 13.7989 17.947 13.797 17.9343 13.798C17.9217 13.799 17.9092 13.8031 17.8978 13.8099C17.8849 13.8176 17.8744 13.8284 17.8666 13.8409L16.8683 15.5036C16.8647 15.5095 16.8622 15.5158 16.8607 15.5225C16.8592 15.5292 16.8586 15.5362 16.8592 15.5431C16.8597 15.55 16.8613 15.5568 16.8638 15.5632C16.8664 15.5695 16.8699 15.5753 16.8743 15.5803C17.2915 15.9436 17.7864 16.2072 18.3188 16.3539C19.5651 16.7031 20.895 16.4284 21.8829 15.6253C21.8909 15.6174 21.8965 15.6075 21.8992 15.5966C21.9018 15.5857 21.9014 15.5744 21.8978 15.5637C21.8926 15.5501 21.8847 15.538 21.8745 15.5282C21.8644 15.5183 21.8525 15.5111 21.8396 15.5069C21.6071 15.4281 20.9739 15.1948 20.6069 15.0425C19.8091 14.7298 19.0996 14.2437 18.5341 13.6217C18.3546 13.4175 18.19 13.201 18.0415 12.9741C18.0321 12.9559 18.0181 12.9405 18.0009 12.9298C17.9842 12.9191 17.9654 12.9128 17.9459 12.9125C17.9269 12.9137 17.9089 12.9208 17.8941 12.933C17.8803 12.9458 17.8697 12.9618 17.8639 12.9802L17.0254 14.9759C17.0254 14.9759 17.0254 14.9816 17.0254 14.9845C17.0264 14.9883 17.028 14.9918 17.0304 14.9948C17.0328 14.9979 17.0357 15.0004 17.0391 15.0023C17.0426 15.0043 17.0464 15.0055 17.0504 15.0059C17.0544 15.0063 17.0584 15.006 17.0621 15.0048C17.1485 14.9759 17.2906 14.9378 17.4312 14.9009C17.439 14.898 17.4476 14.898 17.4554 14.9009C17.4629 14.9024 17.4697 14.9064 17.4751 14.9122C17.4804 14.918 17.4841 14.9252 17.4856 14.9331C17.4881 14.9407 17.488 14.9488 17.4856 14.9563L17.0709 15.8322C17.0668 15.8409 17.0645 15.8507 17.0645 15.8606C17.0645 15.8706 17.0668 15.8803 17.0709 15.889C17.0751 15.8977 17.0809 15.9052 17.0881 15.9109C17.0954 15.9166 17.1037 15.9205 17.1126 15.9222C17.5371 15.9923 17.9686 15.9892 18.3923 15.9131C18.8459 15.8298 19.2803 15.6709 19.6778 15.4433C20.0754 15.2157 20.4297 14.9231 20.7249 14.5791C21.0202 14.2351 21.2516 13.845 21.4091 13.4273C21.5665 13.0096 21.6477 12.5701 21.6489 12.1267C21.6489 12.0914 21.6429 12.0392 21.6367 11.9697C21.6211 11.7812 21.5794 11.5959 21.5128 11.4189C21.0499 10.1834 20.1086 9.19144 18.9132 8.65992C18.903 8.65547 18.892 8.65428 18.881 8.65652C18.8699 8.65876 18.8597 8.66433 18.8515 8.67251C18.8458 8.68066 18.8421 8.69034 18.8408 8.70054C18.8395 8.71073 18.8407 8.7211 18.8442 8.73067C18.8774 8.84164 18.9082 8.95648 18.9314 9.06833C19.0784 9.78645 19.0457 10.5342 18.8367 11.2339C18.6278 11.9337 18.2493 12.5665 17.7357 13.066C17.6983 13.1048 17.6594 13.1451 17.6238 13.1853L18.0529 13.8228C18.0593 13.8272 18.0647 13.8329 18.0687 13.8395C18.0726 13.8461 18.075 13.8534 18.0758 13.8611C18.0758 13.8688 18.0741 13.8764 18.0709 13.8833C18.0676 13.8902 18.0629 13.8962 18.0571 13.9008C18.0413 13.8772 18.0256 13.8536 18.0074 13.8284Z" fill="#64ffda"/>
+                                    </svg>
+                                    <span>OpenAI Summary</span>
+                                </div>
+                                <p>This privacy policy has concerning clauses about personal data collection, sharing with third parties, and indefinite data retention. The policy allows for your browsing history to be used for targeted advertising and permits selling your data to partners.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="threat-stats mt-8">
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="stat-value">
+                            <span class="animate-number" data-target="2548">0</span>
+                        </div>
+                        <div class="stat-label">Policies Scanned</div>
+                    </div>
                     
-                    <span>View Resume</span>
-                </button>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div class="stat-value">
+                            <span class="animate-number" data-target="1349">0</span>
+                        </div>
+                        <div class="stat-label">Risks Identified</div>
+                    </div>
+                    
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="stat-value">
+                            <span class="animate-number" data-target="894">0</span>
+                        </div>
+                        <div class="stat-label">AI Summaries</div>
+                    </div>
+                    
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-value">
+                            <span class="animate-number" data-target="42896">0</span>
+                        </div>
+                        <div class="stat-label">Minutes Saved</div>
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
-    <footer class="glass-effect">
-        <div class="terminal-text" id="terminal">
-            <span class="prompt">$</span>
-            <span class="command"></span>
         </div>
-        <p class="copyright">
-            <span class="copyright-symbol">&copy;</span>
-            <span class="copyright-year">2025</span>
-            <span class="copyright-divider">|</span>
-            <span class="copyright-name">Muhammed Safuvan</span>
-            <span class="copyright-text">All rights reserved</span>
-        </p>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/muhammed-safuvan-b81312189/" target="_blank" class="social-icon">
-                <img src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" alt="LinkedIn" width="30" height="30">
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title" data-aos="fade-up">How It Works</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Technical overview of the Safe Surf Extension</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+                <div class="tech-diagram" data-aos="fade-right">
+                    <div class="tech-flow">
+                        <div class="tech-step">
+                            <div class="tech-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="tech-arrow">→</div>
+                            <div class="tech-label">Policy Detection</div>
+                        </div>
+                        <div class="tech-step">
+                            <div class="tech-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="tech-arrow">→</div>
+                            <div class="tech-label">Text Extraction</div>
+                        </div>
+                        <div class="tech-step">
+                            <div class="tech-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="tech-arrow">→</div>
+                            <div class="tech-label">NLP Processing</div>
+                        </div>
+                        <div class="tech-step">
+                            <div class="tech-icon">
+                                <svg class="openai-logo-small" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19.7986 10.1025C20.0256 9.32806 20.0575 8.51253 19.892 7.7232C19.3999 5.48265 17.7388 3.69628 15.5354 3.03462C13.3319 2.37296 10.9878 2.91542 9.344 4.46764C8.6985 4.05542 7.97193 3.79993 7.21427 3.71822C4.97833 3.459 2.86612 4.80987 2.00799 6.87661C1.14987 8.94334 1.65864 11.3524 3.27604 12.8283C3.049 13.6026 3.01716 14.4182 3.18264 15.2076C3.67476 17.4481 5.33582 19.2345 7.53929 19.8961C9.74276 20.5578 12.0869 20.0153 13.7307 18.4631C14.3762 18.8753 15.1027 19.1308 15.8604 19.2125C18.0963 19.4717 20.2085 18.1208 21.0667 16.0541C21.9248 13.9874 21.416 11.5783 19.7986 10.1025Z" fill="#64ffda"/>
+                                </svg>
+                            </div>
+                            <div class="tech-arrow">→</div>
+                            <div class="tech-label">OpenAI API</div>
+                        </div>
+                        <div class="tech-step">
+                            <div class="tech-icon">
+                                <i class="fas fa-highlighter"></i>
+                            </div>
+                            <div class="tech-arrow">→</div>
+                            <div class="tech-label">Risk Highlighting</div>
+                        </div>
+                        <div class="tech-step">
+                            <div class="tech-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="tech-label">Summary Generation</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-details" data-aos="fade-left">
+                    <div class="tech-card">
+                        <h3 class="text-xl font-semibold mb-2">Advanced NLP Pattern Recognition</h3>
+                        <p class="mb-4">Our extension uses Natural Language Processing to automatically detect privacy policy pages as you browse websites. When identified, it extracts the policy text for analysis.</p>
+                        
+                        <h3 class="text-xl font-semibold mb-2">OpenAI API Integration</h3>
+                        <p class="mb-4">We leverage OpenAI's powerful language models through their API to scan the policy text, identify concerning patterns, and generate user-friendly summaries of complex legal language.</p>
+                        
+                        <h3 class="text-xl font-semibold mb-2">Risk Classification System</h3>
+                        <p class="mb-4">Our proprietary algorithm categorizes privacy risks into severity levels, flagging terms related to data collection, sharing, and retention that could impact your privacy.</p>
+                        
+                        <h3 class="text-xl font-semibold mb-2">Real-time Processing</h3>
+                        <p>All analysis happens in real-time with minimal latency, providing instant insights as you browse, with your data privacy preserved throughout the process.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Demonstrations Section -->
+    <section id="tech-demos" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title" data-aos="fade-up">Technical Demonstrations</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">See the inner workings of our extension in action</p>
+            
+            <!-- Code Snippet Animation -->
+            <div class="mt-16" data-aos="fade-up">
+                <h3 class="text-2xl font-semibold text-center mb-8">Extension Code Execution</h3>
+                <div class="code-animation-container">
+                    <div class="code-tabs">
+                        <div class="code-tab active" data-tab="detection">Detection</div>
+                        <div class="code-tab" data-tab="analysis">Analysis</div>
+                        <div class="code-tab" data-tab="summary">Summary</div>
+                    </div>
+                    <div class="code-window">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <div class="code-title">privacy-detector.js</div>
+                        </div>
+                        <div class="code-content active" id="detection-code">
+                            <pre><code>
+// Privacy Policy Detection Module
+class PrivacyDetector {
+  constructor() {
+    this.patterns = [
+      /privacy\s+policy/i,
+      /terms\s+(of\s+service|and\s+conditions)/i,
+      /data\s+(collection|usage|processing)/i
+    ];
+    this.confidence = 0;
+    console.log("Privacy Detector initialized");
+  }
+
+  async scanPage() {
+    const bodyText = document.body.innerText;
+    const url = window.location.href;
+    
+    // Check URL patterns
+    if (url.includes("privacy") || 
+        url.includes("terms")) {
+      this.confidence += 0.4;
+    }
+    
+    // Check content patterns
+    for (const pattern of this.patterns) {
+      if (pattern.test(bodyText)) {
+        this.confidence += 0.2;
+        console.log(`Matched pattern: ${pattern}`);
+      }
+    }
+    
+    if (this.confidence > 0.5) {
+      return this.extractPolicyText();
+    }
+    
+    return null;
+  }
+  
+  extractPolicyText() {
+    // Extract main content
+    const mainContent = this.findMainContentElement();
+    return {
+      text: mainContent.innerText,
+      html: mainContent.innerHTML,
+      confidence: this.confidence
+    };
+  }
+}
+
+// Initialize and run detector
+const detector = new PrivacyDetector();
+detector.scanPage().then(result => {
+  if (result) {
+    chrome.runtime.sendMessage({
+      action: "POLICY_DETECTED",
+      payload: result
+    });
+  }
+});
+                            </code></pre>
+                        </div>
+                        <div class="code-content" id="analysis-code">
+                            <pre><code>
+// Privacy Risk Analysis Module
+class PrivacyAnalyzer {
+  constructor() {
+    this.riskTerms = {
+      high: [
+        "sell your data", "share with third parties",
+        "targeted advertising", "location tracking"
+      ],
+      medium: [
+        "collect personal information", "store your data",
+        "cookies", "behavioral analysis"
+      ],
+      low: [
+        "anonymous statistics", "aggregate data",
+        "improve service", "troubleshooting"
+      ]
+    };
+  }
+
+  async analyzePolicy(policyText) {
+    const sentences = this.splitIntoSentences(policyText);
+    const risks = {
+      high: [],
+      medium: [],
+      low: []
+    };
+    
+    // Analyze each sentence for risk terms
+    for (const sentence of sentences) {
+      const sentenceLower = sentence.toLowerCase();
+      
+      // Check for high risks
+      for (const term of this.riskTerms.high) {
+        if (sentenceLower.includes(term)) {
+          risks.high.push({
+            sentence,
+            term,
+            index: sentenceLower.indexOf(term)
+          });
+        }
+      }
+      
+      // Similar checks for medium and low risks...
+    }
+    
+    // Calculate overall risk score
+    const riskScore = this.calculateRiskScore(risks);
+    
+    return {
+      risks,
+      riskScore,
+      riskLevel: this.getRiskLevel(riskScore)
+    };
+  }
+  
+  splitIntoSentences(text) {
+    return text.split(/[.!?]+/)
+      .map(s => s.trim())
+      .filter(s => s.length > 10);
+  }
+  
+  calculateRiskScore(risks) {
+    return (risks.high.length * 10) + 
+           (risks.medium.length * 3) + 
+           (risks.low.length * 1);
+  }
+}
+                            </code></pre>
+                        </div>
+                        <div class="code-content" id="summary-code">
+                            <pre><code>
+// OpenAI Summary Generator Module
+class SummaryGenerator {
+  constructor(apiKey) {
+    this.apiKey = apiKey;
+    this.endpoint = "https://api.openai.com/v1/chat/completions";
+  }
+
+  async generateSummary(policyText, risks) {
+    const prompt = this.createPrompt(policyText, risks);
+    
+    try {
+      const response = await fetch(this.endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${this.apiKey}`
+        },
+        body: JSON.stringify({
+          model: "gpt-3.5-turbo",
+          messages: [{
+            role: "system",
+            content: "You analyze privacy policies and summarize key points of concern in clear language."
+          }, {
+            role: "user",
+            content: prompt
+          }],
+          max_tokens: 150,
+          temperature: 0.7
+        })
+      });
+      
+      const data = await response.json();
+      return data.choices[0].message.content;
+    } catch (error) {
+      console.error("Error generating summary:", error);
+      return "Unable to generate summary at this time.";
+    }
+  }
+  
+  createPrompt(policyText, risks) {
+    return `Please analyze this privacy policy and provide a concise summary 
+    focusing on concerns regarding data collection, sharing, and user privacy.
+    
+    Policy text: "${policyText.substring(0, 1000)}..."
+    
+    Identified risks: ${JSON.stringify(risks)}
+    
+    Provide a brief summary (2-3 sentences) highlighting the most concerning aspects.`;
+  }
+}
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Privacy News Feed -->
+            <div class="mt-24" data-aos="fade-up">
+                <h3 class="text-2xl font-semibold text-center mb-4">Privacy News Feed</h3>
+                <p class="text-center text-gray-400 max-w-2xl mx-auto mb-12">Stay informed with the latest privacy news, breaches, and regulations from around the world.</p>
+                
+                <div class="news-grid" id="news-grid">
+                    <!-- News Card 1 -->
+                    <div class="news-card" data-id="news1">
+                        <div class="news-card-inner">
+                            <div class="news-image-container">
+                                <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                                <div class="news-tag breaking">Breaking</div>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-meta">
+                                    <span class="news-source">TechPrivacy</span>
+                                    <span class="news-date">May 15, 2023</span>
+                                </div>
+                                <h4 class="news-title">New EU AI Regulation Imposes Strict Privacy Requirements</h4>
+                                <p class="news-excerpt">European Parliament approves new Artificial Intelligence Act with unprecedented regulations on data collection and privacy protections.</p>
+                            </div>
+                            <div class="news-footer">
+                                <div class="news-stats">
+                                    <span class="news-impact high">High Impact</span>
+                                    <span class="news-reading-time">3 min read</span>
+                                </div>
+                                <div class="news-expand-btn">
+                                    <i class="fas fa-expand"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- News Card 2 -->
+                    <div class="news-card" data-id="news2">
+                        <div class="news-card-inner">
+                            <div class="news-image-container">
+                                <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                                <div class="news-tag alert">Alert</div>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-meta">
+                                    <span class="news-source">SecurityDaily</span>
+                                    <span class="news-date">May 12, 2023</span>
+                                </div>
+                                <h4 class="news-title">Major Browser Vulnerability Exposes User Tracking Data</h4>
+                                <p class="news-excerpt">Researchers discovered a zero-day vulnerability affecting multiple browsers that could expose browsing history and tracking data to malicious actors.</p>
+                            </div>
+                            <div class="news-footer">
+                                <div class="news-stats">
+                                    <span class="news-impact critical">Critical</span>
+                                    <span class="news-reading-time">5 min read</span>
+                                </div>
+                                <div class="news-expand-btn">
+                                    <i class="fas fa-expand"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- News Card 3 -->
+                    <div class="news-card" data-id="news3">
+                        <div class="news-card-inner">
+                            <div class="news-image-container">
+                                <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1591017403286-fd8493524e1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                                <div class="news-tag update">Update</div>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-meta">
+                                    <span class="news-source">PrivacyWatch</span>
+                                    <span class="news-date">May 10, 2023</span>
+                                </div>
+                                <h4 class="news-title">California Strengthens CCPA with New Amendments</h4>
+                                <p class="news-excerpt">California Consumer Privacy Act receives major updates focused on data minimization and stronger opt-out mechanisms for cross-context behavioral advertising.</p>
+                            </div>
+                            <div class="news-footer">
+                                <div class="news-stats">
+                                    <span class="news-impact medium">Medium Impact</span>
+                                    <span class="news-reading-time">4 min read</span>
+                                </div>
+                                <div class="news-expand-btn">
+                                    <i class="fas fa-expand"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- News Card 4 -->
+                    <div class="news-card" data-id="news4">
+                        <div class="news-card-inner">
+                            <div class="news-image-container">
+                                <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                                <div class="news-tag study">Study</div>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-meta">
+                                    <span class="news-source">TechResearch</span>
+                                    <span class="news-date">May 8, 2023</span>
+                                </div>
+                                <h4 class="news-title">Research Shows 87% of Mobile Apps Share Data Without Clear Consent</h4>
+                                <p class="news-excerpt">New comprehensive study of 10,000 popular mobile applications reveals widespread data sharing practices that bypass explicit user consent mechanisms.</p>
+                            </div>
+                            <div class="news-footer">
+                                <div class="news-stats">
+                                    <span class="news-impact high">High Impact</span>
+                                    <span class="news-reading-time">6 min read</span>
+                                </div>
+                                <div class="news-expand-btn">
+                                    <i class="fas fa-expand"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- News Card 5 -->
+                    <div class="news-card" data-id="news5">
+                        <div class="news-card-inner">
+                            <div class="news-image-container">
+                                <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1542903660-eedba2cda473?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                                <div class="news-tag guide">Guide</div>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-meta">
+                                    <span class="news-source">DigitalRights</span>
+                                    <span class="news-date">May 5, 2023</span>
+                                </div>
+                                <h4 class="news-title">How To Protect Your Privacy When Using AI Tools</h4>
+                                <p class="news-excerpt">Comprehensive guide to maintaining privacy while using generative AI tools, with practical steps to prevent data leakage and protect sensitive information.</p>
+                            </div>
+                            <div class="news-footer">
+                                <div class="news-stats">
+                                    <span class="news-impact informative">Informative</span>
+                                    <span class="news-reading-time">8 min read</span>
+                                </div>
+                                <div class="news-expand-btn">
+                                    <i class="fas fa-expand"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- News Card 6 -->
+                    <div class="news-card" data-id="news6">
+                        <div class="news-card-inner">
+                            <div class="news-image-container">
+                                <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                                <div class="news-tag breach">Breach</div>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-meta">
+                                    <span class="news-source">CyberAlert</span>
+                                    <span class="news-date">May 3, 2023</span>
+                                </div>
+                                <h4 class="news-title">Healthcare Provider Data Breach Exposes 3.5M Patient Records</h4>
+                                <p class="news-excerpt">Major healthcare services provider confirms breach including patient names, addresses, social security numbers, and limited medical history information.</p>
+                            </div>
+                            <div class="news-footer">
+                                <div class="news-stats">
+                                    <span class="news-impact critical">Critical</span>
+                                    <span class="news-reading-time">5 min read</span>
+                                </div>
+                                <div class="news-expand-btn">
+                                    <i class="fas fa-expand"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- News Article Overlay -->
+                <div class="news-article-overlay" id="news-article-overlay">
+                    <div class="article-close-btn" id="article-close">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    
+                    <div class="article-container">
+                        <!-- Article 1 -->
+                        <div class="article-content" data-id="news1">
+                            <div class="article-header">
+                                <div class="article-meta">
+                                    <span class="article-source">TechPrivacy</span>
+                                    <span class="article-dot">•</span>
+                                    <span class="article-date">May 15, 2023</span>
+                                    <span class="article-dot">•</span>
+                                    <span class="article-tag breaking">Breaking</span>
+                                </div>
+                                <h2 class="article-title">New EU AI Regulation Imposes Strict Privacy Requirements</h2>
+                                <div class="article-author">
+                                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Author" class="author-image">
+                                    <div class="author-info">
+                                        <span class="author-name">Elena Bergson</span>
+                                        <span class="author-role">Technology Policy Reporter</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="article-featured-image">
+                                <img src="https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="EU AI Regulation">
+                                <div class="article-image-caption">European Parliament in Brussels where the legislation was passed</div>
+                            </div>
+                            
+                            <div class="article-body">
+                                <p>In a landmark decision that will reshape the landscape of artificial intelligence development and deployment within its borders, the European Union has approved the comprehensive AI Act, setting unprecedented standards for privacy protection in AI systems.</p>
+                                
+                                <p>The regulation, which passed with a vote of 548-78, establishes a tiered approach to AI regulation based on risk levels, with the strictest rules applying to systems that interact with personal data or make automated decisions affecting individuals.</p>
+                                
+                                <h3>Key Privacy Provisions</h3>
+                                
+                                <ul>
+                                    <li><strong>Data Minimization Requirements:</strong> AI systems must be designed to use the minimum amount of personal data necessary to function effectively.</li>
+                                    <li><strong>Transparency Obligations:</strong> Users must be clearly informed when interacting with AI systems, with explicit disclosure of data collection practices.</li>
+                                    <li><strong>Right to Explanation:</strong> Individuals have the right to understand how automated decisions affecting them are made.</li>
+                                    <li><strong>Prohibition of Real-time Biometric Identification:</strong> Strict limitations on facial recognition and other biometric identification systems in public spaces.</li>
+                                </ul>
+                                
+                                <p>The legislation imposes fines of up to 6% of global annual revenue for serious violations, significantly higher than the GDPR's maximum penalties.</p>
+                                
+                                <blockquote>
+                                    "This regulation sets a new global standard for responsible AI that respects fundamental rights while fostering innovation," said Dragos Tudorache, co-rapporteur of the legislation. "It ensures that AI serves people, not the other way around."
+                                </blockquote>
+                                
+                                <h3>Global Impact</h3>
+                                
+                                <p>Industry experts anticipate a "Brussels Effect" similar to what occurred with GDPR, where global technology companies adapt their worldwide practices to comply with EU regulations rather than maintaining different standards for different markets.</p>
+                                
+                                <p>The regulation is expected to come into force in early 2024, with a phased implementation period giving companies time to adapt their systems to the new requirements.</p>
+                                
+                                <div class="article-related">
+                                    <h4>Related Coverage</h4>
+                                    <ul>
+                                        <li><a href="#">How the EU AI Act Compares to Other Global Regulations</a></li>
+                                        <li><a href="#">Tech Industry Responses to New AI Legislation</a></li>
+                                        <li><a href="#">What the AI Act Means for Consumer Privacy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Placeholder for other articles -->
+                        <div class="article-content" data-id="news2">
+                            <div class="article-header">
+                                <div class="article-meta">
+                                    <span class="article-source">SecurityDaily</span>
+                                    <span class="article-dot">•</span>
+                                    <span class="article-date">May 12, 2023</span>
+                                    <span class="article-dot">•</span>
+                                    <span class="article-tag alert">Alert</span>
+                                </div>
+                                <h2 class="article-title">Major Browser Vulnerability Exposes User Tracking Data</h2>
+                                <div class="article-author">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Author" class="author-image">
+                                    <div class="author-info">
+                                        <span class="author-name">Marcus Chen</span>
+                                        <span class="author-role">Security Researcher</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="article-featured-image">
+                                <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Browser Vulnerability">
+                                <div class="article-image-caption">The vulnerability affects multiple popular browsers across operating systems</div>
+                            </div>
+                            
+                            <div class="article-body">
+                                <p>A critical zero-day vulnerability has been discovered affecting multiple major browsers, potentially exposing sensitive user tracking data to malicious actors. The vulnerability, dubbed "TrackingLeaks," allows attackers to access browser history, advertising identifiers, and tracking cookies without user permission.</p>
+                                
+                                <p>Security researchers at CyberWatch Institute disclosed the vulnerability yesterday after a 90-day responsible disclosure period with affected browser vendors. According to their report, the vulnerability affects the latest versions of Chrome, Firefox, and Edge on both desktop and mobile platforms.</p>
+                                
+                                <h3>How the Vulnerability Works</h3>
+                                
+                                <p>TrackingLeaks exploits a flaw in how browsers process cross-origin requests related to federated login systems. By crafting a specially designed webpage with malicious JavaScript, attackers can bypass the same-origin policy restrictions that normally prevent access to data from different domains.</p>
+                                
+                                <p>The research team demonstrated that the exploit could be used to:</p>
+                                
+                                <ul>
+                                    <li>Extract browsing history related to specific domains</li>
+                                    <li>Access advertising identifiers used for cross-site tracking</li>
+                                    <li>Extract authentication tokens from specific third-party services</li>
+                                    <li>Determine what tracking protections users have enabled</li>
+                                </ul>
+                                
+                                <p>Most concerning is that the attack can be executed without triggering browser security warnings, making it particularly dangerous for targeted attacks.</p>
+                                
+                                <blockquote>
+                                    "What makes this vulnerability particularly concerning is that it operates silently in the background. A user could visit a seemingly innocent website while the attack extracts their tracking data without any visible indication of compromise," explained Dr. Eliza Stern, lead researcher on the discovery.
+                                </blockquote>
+                                
+                                <h3>Impact and Mitigations</h3>
+                                
+                                <p>Browser vendors have acknowledged the vulnerability and are working on patches. Google has already released a fix for Chrome in version 112.0.5615.138, while Firefox and Edge patches are expected within the week.</p>
+                                
+                                <p>Until patches are available for all browsers, security researchers recommend:</p>
+                                
+                                <ul>
+                                    <li>Updating browsers immediately when patches become available</li>
+                                    <li>Using privacy-focused browser extensions that block scripts by default</li>
+                                    <li>Considering alternative browsers with stronger isolation models</li>
+                                    <li>Regularly clearing cookies and browsing history</li>
+                                </ul>
+                                
+                                <div class="article-related">
+                                    <h4>Related Coverage</h4>
+                                    <ul>
+                                        <li><a href="#">How to Check If Your Browser Is Vulnerable to TrackingLeaks</a></li>
+                                        <li><a href="#">The Growing Trend of Browser-Based Privacy Exploits</a></li>
+                                        <li><a href="#">Interview: The Security Researchers Who Discovered TrackingLeaks</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="article-content" data-id="news3">
+                            <div class="article-header">
+                                <div class="article-meta">
+                                    <span class="article-source">PrivacyWatch</span>
+                                    <span class="article-dot">•</span>
+                                    <span class="article-date">May 10, 2023</span>
+                                    <span class="article-dot">•</span>
+                                    <span class="article-tag update">Update</span>
+                                </div>
+                                <h2 class="article-title">California Strengthens CCPA with New Amendments</h2>
+                                <div class="article-author">
+                                    <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Author" class="author-image">
+                                    <div class="author-info">
+                                        <span class="author-name">Sophia Rodriguez</span>
+                                        <span class="author-role">Legal Affairs Correspondent</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="article-featured-image">
+                                <img src="https://images.unsplash.com/photo-1591017403286-fd8493524e1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="California State Capitol">
+                                <div class="article-image-caption">California State Capitol in Sacramento where the amendments were signed into law</div>
+                            </div>
+                            
+                            <div class="article-body">
+                                <p>California has once again positioned itself at the forefront of data privacy regulation with a series of significant amendments to the California Consumer Privacy Act (CCPA). The new measures, signed into law yesterday, focus primarily on data minimization requirements and strengthening opt-out mechanisms for cross-context behavioral advertising.</p>
+                                
+                                <p>The amendments come as part of California's ongoing effort to address gaps in the original legislation and respond to evolving data collection practices by technology companies and data brokers.</p>
+                                
+                                <h3>Key Changes to the CCPA</h3>
+                                
+                                <p>The amendments introduce several major changes that businesses will need to implement within the next 12 months:</p>
+                                
+                                <ul>
+                                    <li><strong>Enhanced Data Minimization:</strong> Businesses must limit collection to what is "reasonably necessary and proportionate" to the stated purposes, with explicit requirements to document necessity before collection.</li>
+                                    <li><strong>Global Opt-Out Preference Signals:</strong> Browsers and devices can now send global privacy control signals that businesses must honor as legally binding opt-out requests.</li>
+                                    <li><strong>Expanded Definition of "Selling" Data:</strong> The definition now explicitly includes data exchanges where non-monetary benefits are received.</li>
+                                    <li><strong>Right to Correct:</strong> Consumers now have the right to correct inaccurate personal information held by businesses.</li>
+                                    <li><strong>Sensitive Data Protections:</strong> Additional consent requirements for processing sensitive personal information, including precise geolocation.</li>
+                                </ul>
+                                
+                                <p>The amendments also increase penalties for violations involving children's data, with fines tripling for infractions related to users under 16 years of age.</p>
+                                
+                                <blockquote>
+                                    "These amendments reflect California's commitment to ensuring consumers maintain meaningful control over their personal information," said California Attorney General Rob Bonta. "As technology evolves, so must our laws to protect consumers in the digital age."
+                                </blockquote>
+                                
+                                <h3>Business Impact</h3>
+                                
+                                <p>The amendments will require significant operational changes for businesses that collect data from California residents. Privacy experts estimate that compliance costs could increase by 30-40% for organizations that have not already implemented robust data minimization practices.</p>
+                                
+                                <p>Particularly impacted will be the ad tech industry, as the strengthened opt-out mechanisms for cross-context behavioral advertising will likely reduce the availability of tracking data used for targeted advertising.</p>
+                                
+                                <p>"Companies will need to revisit their data inventories and mapping exercises to ensure they're only collecting what's necessary," explained Maria Blanco, privacy compliance consultant. "The days of collecting data 'just in case' it might be useful later are effectively over in California."</p>
+                                
+                                <div class="article-related">
+                                    <h4>Related Coverage</h4>
+                                    <ul>
+                                        <li><a href="#">How Businesses Should Prepare for the Enhanced CCPA</a></li>
+                                        <li><a href="#">California vs. GDPR: Comparing Global Privacy Standards</a></li>
+                                        <li><a href="#">Will California's Privacy Approach Become the De Facto National Standard?</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="article-content" data-id="news4">
+                            <div class="article-header">
+                                <div class="article-meta">
+                                    <span class="article-source">TechResearch</span>
+                                    <span class="article-dot">•</span>
+                                    <span class="article-date">May 8, 2023</span>
+                                    <span class="article-dot">•</span>
+                                    <span class="article-tag study">Study</span>
+                                </div>
+                                <h2 class="article-title">Research Shows 87% of Mobile Apps Share Data Without Clear Consent</h2>
+                                <div class="article-author">
+                                    <img src="https://randomuser.me/api/portraits/men/15.jpg" alt="Author" class="author-image">
+                                    <div class="author-info">
+                                        <span class="author-name">Dr. Akira Nakamura</span>
+                                        <span class="author-role">Data Privacy Researcher</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="article-featured-image">
+                                <img src="https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Mobile Apps Analysis">
+                                <div class="article-image-caption">Researchers analyzed data transmission patterns from thousands of popular mobile applications</div>
+                            </div>
+                            
+                            <div class="article-body">
+                                <p>A comprehensive new study examining 10,000 popular mobile applications has revealed alarming data sharing practices, with 87% of apps sharing user data with third parties without obtaining clear informed consent from users.</p>
+                                
+                                <p>The research, conducted by a team of cybersecurity experts at Oxford University in collaboration with the Digital Privacy Alliance, is the largest study of its kind to date and provides unprecedented insights into how mobile applications handle user data across both iOS and Android platforms.</p>
+                                
+                                <h3>Key Findings</h3>
+                                
+                                <p>After analyzing network traffic, permission usage, and privacy policies across the most downloaded apps in various categories, researchers uncovered several concerning patterns:</p>
+                                
+                                <ul>
+                                    <li>76% of apps were transmitting unique identifiers that allow for user tracking across different services and applications</li>
+                                    <li>63% shared location data with third parties, often at a precision level that could identify home and work addresses</li>
+                                    <li>44% of apps accessed the user's contact list and transmitted portions of this data to external servers</li>
+                                    <li>92% of apps connected to at least five different third-party domains, with the average being twelve connections</li>
+                                    <li>Only 13% of apps properly disclosed these data sharing practices in their privacy policies in clear, understandable language</li>
+                                </ul>
+                                
+                                <p>Perhaps most troubling, the study found that 34% of apps analyzed continue to collect and transmit data even after users declined permission requests through the operating system's permission controls.</p>
+                                
+                                <blockquote>
+                                    "The gap between what users believe they're consenting to and what's actually happening with their data is staggering," said Dr. Samantha Price, lead author of the study. "Consent mechanisms are being designed to obtain technical compliance while deliberately obscuring the true extent of data collection and sharing."
+                                </blockquote>
+                                
+                                <h3>Industry Variations</h3>
+                                
+                                <p>The research revealed significant variations in data sharing practices across different app categories. Gaming apps were found to be the most aggressive data collectors, with an average of 17 third-party connections per app. Social media apps followed closely with 15 connections on average.</p>
+                                
+                                <p>Surprisingly, even health and wellness apps—which often contain sensitive personal information—were found to share data with an average of 8 different third parties, including advertising networks, analytics companies, and data brokers.</p>
+                                
+                                <p>Financial applications performed best in the study, with significantly lower rates of third-party data sharing, likely due to the stricter regulatory environment governing financial services.</p>
+                                
+                                <div class="article-related">
+                                    <h4>Related Coverage</h4>
+                                    <ul>
+                                        <li><a href="#">How to Check What Data Your Apps Are Sharing</a></li>
+                                        <li><a href="#">The Most and Least Privacy-Friendly Mobile Apps of 2023</a></li>
+                                        <li><a href="#">Interview: Inside Oxford University's Mobile Privacy Research Lab</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="article-content" data-id="news5">
+                            <div class="article-header">
+                                <div class="article-meta">
+                                    <span class="article-source">DigitalRights</span>
+                                    <span class="article-dot">•</span>
+                                    <span class="article-date">May 5, 2023</span>
+                                    <span class="article-dot">•</span>
+                                    <span class="article-tag guide">Guide</span>
+                                </div>
+                                <h2 class="article-title">How To Protect Your Privacy When Using AI Tools</h2>
+                                <div class="article-author">
+                                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Author" class="author-image">
+                                    <div class="author-info">
+                                        <span class="author-name">Jade Williams</span>
+                                        <span class="author-role">Digital Rights Advocate</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="article-featured-image">
+                                <img src="https://images.unsplash.com/photo-1542903660-eedba2cda473?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="AI Privacy Protection">
+                                <div class="article-image-caption">Generative AI tools have exploded in popularity but often come with significant privacy trade-offs</div>
+                            </div>
+                            
+                            <div class="article-body">
+                                <p>As generative AI tools like ChatGPT, Midjourney, and DALL-E become increasingly integrated into our daily workflows, many users are unaware of the significant privacy implications that come with these powerful technologies. This comprehensive guide explores the privacy risks associated with AI tools and provides practical strategies to protect your sensitive information.</p>
+                                
+                                <h3>Understanding How AI Systems Process Your Data</h3>
+                                
+                                <p>Most generative AI tools operate on a simple principle: you provide information (prompts), and they generate outputs based on their training and your input. What happens to your data during this process varies significantly between services:</p>
+                                
+                                <ul>
+                                    <li>Many AI providers retain user prompts to improve their models</li>
+                                    <li>Some services claim ownership rights to generated content</li>
+                                    <li>Your interactions may be reviewed by human contractors for quality assurance</li>
+                                    <li>Inputs containing personal information can be incorporated into the model's knowledge base</li>
+                                </ul>
+                                
+                                <p>The fundamental privacy challenge is that these systems require data to function, but the boundaries around how that data is used remain blurry and often poorly disclosed.</p>
+                                
+                                <h3>Practical Protection Strategies</h3>
+                                
+                                <p>To maintain privacy while still benefiting from AI tools, consider implementing these practices:</p>
+                                
+                                <h4>1. Sanitize Your Inputs</h4>
+                                
+                                <p>Before submitting prompts to any AI system, remove or pseudonymize personal information. For example:</p>
+                                
+                                <ul>
+                                    <li>Replace real names with placeholders (Person A, Company B)</li>
+                                    <li>Remove specific dates, locations, and identifiable details</li>
+                                    <li>Avoid sharing proprietary business information or confidential data</li>
+                                    <li>Break larger documents into smaller, less identifiable chunks</li>
+                                </ul>
+                                
+                                <h4>2. Use Self-Hosted or Local AI Alternatives</h4>
+                                
+                                <p>Several privacy-focused AI options are now available that process data locally or give you control over your data:</p>
+                                
+                                <ul>
+                                    <li>Self-hosted open-source models like Alpaca or Vicuna</li>
+                                    <li>Local AI tools that run on your own hardware</li>
+                                    <li>Enterprise AI solutions with clear data protection agreements</li>
+                                </ul>
+                                
+                                <h4>3. Read (and Understand) Privacy Policies</h4>
+                                
+                                <p>Before using any AI service, carefully review their privacy policy, focusing on:</p>
+                                
+                                <ul>
+                                    <li>Data retention periods</li>
+                                    <li>Opt-out options for data collection</li>
+                                    <li>Data sharing with third parties</li>
+                                    <li>Your rights to deletion and correction</li>
+                                </ul>
+                                
+                                <h4>4. Use Dedicated Accounts and Compartmentalize</h4>
+                                
+                                <p>Create separation between your personal identity and your AI interactions:</p>
+                                
+                                <ul>
+                                    <li>Use dedicated email addresses for AI services</li>
+                                    <li>Consider a separate browser or profile for AI interactions</li>
+                                    <li>Use different AI services for different types of content (work vs. personal)</li>
+                                </ul>
+                                
+                                <blockquote>
+                                    "The key to maintaining privacy in the age of AI is thoughtful compartmentalization," says privacy expert Daniel Miessler. "By creating intentional boundaries around sensitive information, you can still benefit from these tools without compromising your privacy."
+                                </blockquote>
+                                
+                                <div class="article-related">
+                                    <h4>Related Resources</h4>
+                                    <ul>
+                                        <li><a href="#">Privacy Comparison Chart of Popular AI Tools</a></li>
+                                        <li><a href="#">Setting Up Your Own Local AI Environment: A Beginner's Guide</a></li>
+                                        <li><a href="#">Data Rights and AI: What Existing Laws Protect You</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="article-content" data-id="news6">
+                            <div class="article-header">
+                                <div class="article-meta">
+                                    <span class="article-source">CyberAlert</span>
+                                    <span class="article-dot">•</span>
+                                    <span class="article-date">May 3, 2023</span>
+                                    <span class="article-dot">•</span>
+                                    <span class="article-tag breach">Breach</span>
+                                </div>
+                                <h2 class="article-title">Healthcare Provider Data Breach Exposes 3.5M Patient Records</h2>
+                                <div class="article-author">
+                                    <img src="https://randomuser.me/api/portraits/men/57.jpg" alt="Author" class="author-image">
+                                    <div class="author-info">
+                                        <span class="author-name">James Wilder</span>
+                                        <span class="author-role">Cybersecurity Correspondent</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="article-featured-image">
+                                <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Healthcare Data Breach">
+                                <div class="article-image-caption">The breach affected multiple facilities across the provider's nationwide network</div>
+                            </div>
+                            
+                            <div class="article-body">
+                                <p>National Health Services (NHS), one of the country's largest healthcare providers, has confirmed a massive data breach affecting approximately 3.5 million patients. The breach, which was discovered three weeks ago but only disclosed yesterday, includes sensitive personal and medical information spanning patient records from 2018 to present.</p>
+                                
+                                <p>According to the company's disclosure, unauthorized access to their systems began in January and continued undetected for nearly four months before security monitoring tools identified the suspicious activity.</p>
+                                
+                                <h3>Compromised Information</h3>
+                                
+                                <p>NHS has confirmed that the breach includes a wide range of sensitive information:</p>
+                                
+                                <ul>
+                                    <li><strong>Personal identifiers:</strong> Full names, dates of birth, addresses, phone numbers, and email addresses</li>
+                                    <li><strong>Healthcare information:</strong> Medical record numbers, treatment histories, medication lists, and diagnoses for some patients</li>
+                                    <li><strong>Insurance details:</strong> Policy numbers, group IDs, and claims information</li>
+                                    <li><strong>Financial data:</strong> For approximately 420,000 patients, partial payment card information and billing addresses</li>
+                                    <li><strong>Social Security Numbers:</strong> The last four digits of SSNs for approximately 1.2 million patients</li>
+                                </ul>
+                                
+                                <p>The company emphasized that full Social Security numbers and complete payment card information were encrypted and do not appear to have been compromised, though investigation is ongoing.</p>
+                                
+                                <h3>Attack Vector and Response</h3>
+                                
+                                <p>According to preliminary findings, the attackers gained initial access through a phishing campaign that successfully compromised an employee's credentials. From there, they moved laterally through the network, escalating privileges until they were able to access the patient record databases.</p>
+                                
+                                <blockquote>
+                                    "We deeply regret this incident and are taking it extremely seriously," said Robert Garrison, Chief Information Security Officer at NHS. "We have engaged leading cybersecurity firms to assist with our investigation and remediation efforts, and are cooperating fully with law enforcement and regulatory authorities."
+                                </blockquote>
+                                
+                                <p>The company has implemented several immediate measures in response to the breach:</p>
+                                
+                                <ul>
+                                    <li>Password resets for all employee accounts</li>
+                                    <li>Implementation of additional network segmentation</li>
+                                    <li>Enhanced multi-factor authentication requirements</li>
+                                    <li>Deployment of additional endpoint detection and response tools</li>
+                                </ul>
+                                
+                                <h3>Patient Protection Measures</h3>
+                                
+                                <p>NHS has begun notifying affected individuals by mail and has established a dedicated call center to address patient concerns. The company is offering two years of credit monitoring and identity theft protection services to all affected individuals.</p>
+                                
+                                <p>Cybersecurity experts advise affected patients to take several additional precautions:</p>
+                                
+                                <ul>
+                                    <li>Place a fraud alert or security freeze on your credit reports</li>
+                                    <li>Monitor explanation of benefits (EOB) statements for suspicious medical claims</li>
+                                    <li>Review all medical records for accuracy at your next provider visit</li>
+                                    <li>Be vigilant for targeted phishing attempts that may use the stolen information</li>
+                                </ul>
+                                
+                                <div class="article-related">
+                                    <h4>Related Coverage</h4>
+                                    <ul>
+                                        <li><a href="#">Healthcare Data Breaches: A Growing Epidemic</a></li>
+                                        <li><a href="#">What To Do If Your Medical Information Is Compromised</a></li>
+                                        <li><a href="#">Timeline: The Largest Healthcare Data Breaches of 2023</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- X-ray View of Trackers -->
+            <div class="mt-24" data-aos="fade-up">
+                <h3 class="text-2xl font-semibold text-center mb-8">X-ray View of Hidden Trackers</h3>
+                <div class="xray-container">
+                    <!-- X-ray view content -->
+                </div>
+            </div>
+            
+            <!-- The Privacy Odyssey - Data Packet Journey -->
+            <div class="mt-24" data-aos="fade-up">
+                <h3 class="text-2xl font-semibold text-center mb-4">The Privacy Odyssey</h3>
+                <p class="text-center text-gray-400 max-w-2xl mx-auto mb-12">Follow the epic journey of your data as it travels through the digital cosmos</p>
+                
+                <div class="odyssey-container">
+                    <!-- The Cosmic Map of Internet Realms -->
+                    <div class="odyssey-map">
+                        <div class="odyssey-stars"></div>
+                        <div class="odyssey-constellations"></div>
+                        
+                        <!-- Origin Portal - Your Device -->
+                        <div class="odyssey-realm origin-realm" data-realm="origin">
+                            <div class="realm-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <div class="realm-name">Origin Nexus</div>
+                            <div class="realm-pulse"></div>
+                        </div>
+                        
+                        <!-- Data Shaping Forge -->
+                        <div class="odyssey-realm" data-realm="forge">
+                            <div class="realm-icon">
+                                <i class="fas fa-hammer"></i>
+                            </div>
+                            <div class="realm-name">Data Shaping Forge</div>
+                        </div>
+                        
+                        <!-- The Encryption Nebula -->
+                        <div class="odyssey-realm" data-realm="encryption">
+                            <div class="realm-icon">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <div class="realm-name">Encryption Nebula</div>
+                        </div>
+                        
+                        <!-- ISP Gateway -->
+                        <div class="odyssey-realm" data-realm="isp">
+                            <div class="realm-icon">
+                                <i class="fas fa-broadcast-tower"></i>
+                            </div>
+                            <div class="realm-name">ISP Gateway</div>
+                        </div>
+                        
+                        <!-- The Tracking Wastes -->
+                        <div class="odyssey-realm danger-realm" data-realm="tracking">
+                            <div class="realm-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="realm-name">Tracking Wastes</div>
+                            <div class="danger-zone"></div>
+                        </div>
+                        
+                        <!-- Ad Network Labyrinth -->
+                        <div class="odyssey-realm danger-realm" data-realm="adnetwork">
+                            <div class="realm-icon">
+                                <i class="fas fa-ad"></i>
+                            </div>
+                            <div class="realm-name">Ad Network Labyrinth</div>
+                            <div class="danger-zone"></div>
+                        </div>
+                        
+                        <!-- Data Broker Black Market -->
+                        <div class="odyssey-realm danger-realm" data-realm="brokers">
+                            <div class="realm-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <div class="realm-name">Data Broker Bazaar</div>
+                            <div class="danger-zone"></div>
+                        </div>
+                        
+                        <!-- DNS Crossroads -->
+                        <div class="odyssey-realm" data-realm="dns">
+                            <div class="realm-icon">
+                                <i class="fas fa-directions"></i>
+                            </div>
+                            <div class="realm-name">DNS Crossroads</div>
+                        </div>
+                        
+                        <!-- HTTPS Sanctuary -->
+                        <div class="odyssey-realm" data-realm="https">
+                            <div class="realm-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="realm-name">HTTPS Sanctuary</div>
+                        </div>
+                        
+                        <!-- Destination Server -->
+                        <div class="odyssey-realm destination-realm" data-realm="destination">
+                            <div class="realm-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div class="realm-name">Destination Server</div>
+                            <div class="realm-pulse"></div>
+                        </div>
+                        
+                        <!-- Path Connections -->
+                        <div class="odyssey-paths">
+                            <svg id="odyssey-path-map" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Paths will be dynamically created -->
+                                <defs>
+                                    <linearGradient id="safe-path-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#4CAF50" />
+                                        <stop offset="100%" stop-color="#8BC34A" />
+                                    </linearGradient>
+                                    <linearGradient id="danger-path-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#FF5722" />
+                                        <stop offset="100%" stop-color="#F44336" />
+                                    </linearGradient>
+                                    
+                                    <!-- Glow Filter -->
+                                    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                        <feGaussianBlur stdDeviation="4" result="blur" />
+                                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                    </filter>
+                                    
+                                    <!-- Data Packet Animation -->
+                                    <linearGradient id="packet-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#64B5F6" />
+                                        <stop offset="100%" stop-color="#2196F3" />
+                                    </linearGradient>
+                                </defs>
+                                
+                                <!-- Base paths -->
+                                <path class="odyssey-path main-path" d="M0,0 C0,0 0,0 0,0" />
+                                <path class="odyssey-path danger-path" d="M0,0 C0,0 0,0 0,0" />
+                                <path class="odyssey-path alt-path" d="M0,0 C0,0 0,0 0,0" />
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <!-- Data Packet Protagonist -->
+                    <div class="data-packet-wrapper">
+                        <div class="data-packet">
+                            <div class="packet-core"></div>
+                            <div class="packet-shell"></div>
+                            <div class="packet-aura"></div>
+                            <div class="packet-particles"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Odyssey Story Panel -->
+                    <div class="odyssey-story-panel">
+                        <div class="story-header">
+                            <div class="packet-status">
+                                <div class="status-indicator"></div>
+                                <span class="status-text">Initiating journey...</span>
+                            </div>
+                            <div class="journey-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <div class="progress-stats">
+                                    <span class="hops-count">0 hops</span>
+                                    <span class="time-elapsed">0.00 ms</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="story-content">
+                            <div class="story-chapter active" data-chapter="origin">
+                                <h4 class="chapter-title">Chapter 1: The Beginning</h4>
+                                <p class="chapter-text">Your data packet materializes within the Origin Nexus, a digital manifestation of your intent transformed into bits and bytes. Its crystalline structure pulses with purpose as it prepares for the perilous journey ahead.</p>
+                            </div>
+                            
+                            <div class="story-chapter" data-chapter="forge">
+                                <h4 class="chapter-title">Chapter 2: The Shaping</h4>
+                                <p class="chapter-text">At the Data Shaping Forge, your packet is molded into protocol-specific formats, headers attached like armor, checksums calculated like shields. HTTP, TCP, and IP layers encase your data in protective shells.</p>
+                            </div>
+                            
+                            <div class="story-chapter" data-chapter="encryption">
+                                <h4 class="chapter-title">Chapter 3: Cloaking in Secrecy</h4>
+                                <p class="chapter-text">Inside the swirling mists of the Encryption Nebula, mathematical spells transform your packet into an unreadable cipher. Symmetric keys lock its contents while asymmetric keys prepare secure channels ahead.</p>
+                            </div>
+                            
+                            <div class="story-chapter" data-chapter="isp">
+                                <h4 class="chapter-title">Chapter 4: The First Gateway</h4>
+                                <p class="chapter-text">Your packet approaches the towering ISP Gateway, where immense routers examine its destination coordinates. Like cosmic immigration officers, they stamp your packet's passport and direct it toward the appropriate network highways.</p>
+                            </div>
+                            
+                            <div class="story-chapter" data-chapter="tracking">
+                                <h4 class="chapter-title">Chapter 5: Dangerous Territories</h4>
+                                <p class="chapter-text">Beware the Tracking Wastes! Here, invisible scanners attempt to read your packet's origin and contents. Beacon creatures attach themselves to passing data, while cookie monsters try to tag your packet with identifying markers for future tracking.</p>
+                            </div>
+                            
+                            <div class="story-chapter" data-chapter="adnetwork">
+                                <h4 class="chapter-title">Chapter 6: The Auction Houses</h4>
+                                <p class="chapter-text">Your packet narrowly skirts the Ad Network Labyrinth, where fragments of user profiles are traded in millisecond auctions. Behavioral algorithms attempt to predict your packet's future paths based on past journeys.</p>
+                            </div>
+                            
+                            <div class="story-chapter" data-chapter="brokers">
+                                <h4 class="chapter-title">Chapter 7: The Dark Market</h4>
+                                <p class="chapter-text">In the shadows lies the Data Broker Bazaar, where information merchants compile vast dossiers from packet fragments. Your data's value has been assessed, cataloged, and prepared for sale to the highest bidders.</p>
+                            </div>
+                            
+                            <div class="story-chapter" data-chapter="dns">
+                                <h4 class="chapter-title">Chapter 8: Finding the Way</h4>
+                                <p class="chapter-text">At the DNS Crossroads, your packet consults the great directories that translate human-readable addresses into numeric destinations. Ancient nameservers point the way through the tangled web of global networks.</p>
+                            </div>
+                            
+                            <div class="story-chapter" data-chapter="https">
+                                <h4 class="chapter-title">Chapter 9: The Protected Tunnel</h4>
+                                <p class="chapter-text">Relief at last! Your packet enters the HTTPS Sanctuary, where TLS handshakes verify the authenticity of your destination. Certificate authorities stand guard, ensuring no imposters can intercept your precious data.</p>
+                            </div>
+                            
+                            <div class="story-chapter" data-chapter="destination">
+                                <h4 class="chapter-title">Chapter 10: Journey's End</h4>
+                                <p class="chapter-text">Finally, your packet arrives at the Destination Server, where it is decrypted, reassembled with its companions, and presented to fulfill its purpose. Yet this is not truly the end—soon a response packet will begin its own journey back to you.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="story-controls">
+                            <button class="story-control" id="odyssey-back">
+                                <i class="fas fa-arrow-left"></i>
+                                <span>Previous</span>
+                            </button>
+                            <button class="story-control" id="odyssey-auto">
+                                <i class="fas fa-play"></i>
+                                <span>Auto-Journey</span>
+                            </button>
+                            <button class="story-control" id="odyssey-next">
+                                <span>Next</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Odyssey Lore Panel -->
+                    <div class="odyssey-lore-panel">
+                        <div class="lore-header">
+                            <h4>Digital Realm Encyclopedia</h4>
+                            <button class="lore-close">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="lore-content">
+                            <!-- Lore entries will appear here when a realm is clicked -->
+                            <div class="lore-placeholder">Click any realm to learn more about it</div>
+                            
+                            <div class="lore-entry" data-lore="origin">
+                                <h5>Origin Nexus</h5>
+                                <p>The mystical beginning of all data journeys. Here in the client device, intention becomes electrical impulses, thoughts transform into structured requests, and the data packet takes its first form. The Origin Nexus contains the Browser Kingdoms, Application Provinces, and the mysterious CPU Core, where the fundamental magic of computation occurs.</p>
+                                <div class="lore-facts">
+                                    <div class="lore-fact"><span>Inhabitants:</span> Browsers, Apps, Operating Systems</div>
+                                    <div class="lore-fact"><span>Resources:</span> Local Cache, Cookies, Storage</div>
+                                    <div class="lore-fact"><span>Notable Feature:</span> The Input/Output Portal</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Additional lore entries for each realm would be added here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Threat Encounters -->
+                    <div class="threat-entities">
+                        <!-- Trackers -->
+                        <div class="threat tracker-entity" data-threat="cookie-monster">
+                            <div class="threat-body"></div>
+                            <div class="threat-eyes"></div>
+                            <div class="threat-pulse"></div>
+                        </div>
+                        
+                        <div class="threat tracker-entity" data-threat="fingerprinter">
+                            <div class="threat-body"></div>
+                            <div class="threat-scanner"></div>
+                        </div>
+                        
+                        <div class="threat tracker-entity" data-threat="beacon">
+                            <div class="threat-body"></div>
+                            <div class="threat-signal"></div>
+                        </div>
+                        
+                        <!-- Data Collectors -->
+                        <div class="threat collector-entity" data-threat="datavac">
+                            <div class="threat-body"></div>
+                            <div class="threat-tube"></div>
+                            <div class="threat-suction"></div>
+                        </div>
+                        
+                        <!-- Defenders -->
+                        <div class="defender-entity" data-defender="firewall">
+                            <div class="defender-body"></div>
+                            <div class="defender-shield"></div>
+                        </div>
+                        
+                        <div class="defender-entity" data-defender="blocker">
+                            <div class="defender-body"></div>
+                            <div class="defender-weapon"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Odyssey Interaction Layer -->
+                    <div class="odyssey-interaction-layer">
+                        <div class="realm-info-popup">
+                            <div class="realm-info-header"></div>
+                            <div class="realm-info-content"></div>
+                            <button class="realm-info-lore">View Lore</button>
+                        </div>
+                        
+                        <!-- Encounter Event Popup -->
+                        <div class="encounter-popup">
+                            <div class="encounter-icon"></div>
+                            <div class="encounter-title"></div>
+                            <div class="encounter-description"></div>
+                            <div class="encounter-options">
+                                <button class="encounter-option primary"></button>
+                                <button class="encounter-option secondary"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Feature Showcase -->
+            <div class="mt-24" data-aos="fade-up">
+                <h3 class="text-2xl font-semibold text-center mb-8">Feature Showcase</h3>
+                <p class="section-subtitle text-center mb-12">Discover how Safe Surf simplifies privacy policies and enhances your online security</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Privacy Policy Scanner</h3>
+                        <p>Automatically detects and scans privacy policies on websites you visit to identify potential concerns.</p>
+                    </div>
+                    
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Fast and Lightweight</h3>
+                        <p>Minimal impact on browser performance, keeping your browsing experience smooth and efficient.</p>
+                    </div>
+                    
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">AI-Powered Summaries</h3>
+                        <p>Utilizes OpenAI API to generate concise, easy-to-understand summaries of complex privacy policies.</p>
+                    </div>
+                    
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="feature-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Risk Highlighting</h3>
+                        <p>Automatically highlights concerning terms and privacy risks in policy documents for quick identification.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title" data-aos="fade-up">User Reviews</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">What people say about Safe Surf</p>
+            
+            <div class="mt-12 testimonial-slider">
+                <div class="testimonial-slide" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left text-red-600 text-2xl mb-4"></i>
+                        <p class="mb-6">Safe Surf has completely transformed how I deal with privacy policies. I finally understand what I'm agreeing to when I click "Accept"!</p>
+                        <div class="testimonial-author">
+                            <strong>Sarah Johnson</strong>
+                            <span>Web Developer</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left text-red-600 text-2xl mb-4"></i>
+                        <p class="mb-6">The AI-powered summaries are impressively accurate. It saves me so much time and helps me make informed decisions about my online privacy.</p>
+                        <div class="testimonial-author">
+                            <strong>Michael Chen</strong>
+                            <span>IT Professional</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide" data-aos="fade-up" data-aos-delay="400">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left text-red-600 text-2xl mb-4"></i>
+                        <p class="mb-6">I love how lightweight Safe Surf is. No noticeable impact on my browser speed, yet it provides incredibly useful insights about privacy policies.</p>
+                        <div class="testimonial-author">
+                            <strong>Alex Rodriguez</strong>
+                            <span>Student</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="section-title" data-aos="fade-up">Ready to Understand Privacy Policies?</h2>
+            <p class="section-subtitle mb-12" data-aos="fade-up" data-aos-delay="100">Get Safe Surf Extension today and never be confused by legal jargon again</p>
+            
+            <a href="#" class="download-btn" data-aos="zoom-in" data-aos-delay="200">
+                Download Now
             </a>
-            <a href="https://github.com/your-username" target="_blank" class="social-icon">
-                <img src="https://cdn.worldvectorlogo.com/logos/github-icon-1.svg" alt="GitHub" width="30" height="30">
-            </a>
-            <a href="https://www.instagram.com/safuvan_muhmd/#" target="_blank" class="social-icon">
-                <img src="https://cdn.worldvectorlogo.com/logos/instagram-2016-5.svg" alt="Instagram" width="30" height="30">
-            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <img src="logo.PNG" alt="Safe Surf Logo" class="h-12 mb-3">
+                    <p class="text-gray-400">© 2023 Safe Surf Extension. All rights reserved.</p>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500">
+                <p>Made with ❤️ by the Safe Surf Team</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="script.js"></script>
-    <script>
-        // Add floating elements
-        function createFloatingElements() {
-            const container = document.getElementById('floatingElements');
-            for (let i = 0; i < 20; i++) {
-                const element = document.createElement('div');
-                element.className = 'floating-element';
-                element.style.setProperty('--move-x', `${Math.random() * 200 - 100}px`);
-                element.style.setProperty('--move-y', `${Math.random() * 200 - 100}px`);
-                element.style.left = `${Math.random() * 100}%`;
-                element.style.top = `${Math.random() * 100}%`;
-                container.appendChild(element);
-            }
-        }
-
-        // Update scroll progress
-        function updateScrollProgress() {
-            const scrollProgress = document.getElementById('scrollProgress');
-            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            scrollProgress.style.setProperty('--scroll', `${scrollPercent}%`);
-        }
-
-        // Initialize
-        createFloatingElements();
-        window.addEventListener('scroll', updateScrollProgress);
-    </script>
 </body>
-</html>
+</html> 
