@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Safe Surf Extension</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-gray-900 shadow-lg z-50" id="navbar">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <img src="logo.PNG" alt="Safe Surf Logo" class="h-10 mr-3">
+                <span class="text-2xl font-bold text-red-600">Safe Surf</span>
+            </a>
+            <a href="index.html" class="nav-link">Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-[40vh] flex items-center justify-center relative overflow-hidden pt-20">
+        <div class="hero-bg absolute inset-0 z-0"></div>
+        <div class="container mx-auto px-4 z-10 text-center" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gradient">Privacy Policy</h1>
+            <p class="text-xl text-gray-400">Effective Date: May 20, 2024</p>
+            <div class="mt-8 flex justify-center gap-4">
+                <button class="feature-btn" onclick="window.print()">
+                    <i class="fas fa-print mr-2"></i>
+                    Print Policy
+                </button>
+                <button class="feature-btn" onclick="downloadPDF()">
+                    <i class="fas fa-download mr-2"></i>
+                    Download PDF
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Policy Content -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="policy-container">
+                <!-- Overview Section -->
+                <div class="policy-section" data-aos="fade-up">
+                    <div class="policy-header" onclick="toggleSection(this)">
+                        <div class="policy-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h2>1. Overview</h2>
+                        <div class="policy-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="policy-content active">
+                        <p>Safe Surf ("we," "us," or "our") is a Chrome extension designed to help users understand the privacy implications of websites they visit by analyzing privacy policies and terms of service pages. This Privacy Policy explains how Safe Surf handles data, user privacy, third-party services, and user rights in accordance with applicable laws including the Personal Information Protection and Electronic Documents Act (PIPEDA) in Canada.</p>
+                    </div>
+                </div>
+
+                <!-- Data Collection Section -->
+                <div class="policy-section" data-aos="fade-up">
+                    <div class="policy-header" onclick="toggleSection(this)">
+                        <div class="policy-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h2>2. Data We Collect</h2>
+                        <div class="policy-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="policy-content">
+                        <div class="data-flow-visualization">
+                            <div class="data-node local">
+                                <i class="fas fa-laptop"></i>
+                                <span>Local Processing</span>
+                                <div class="data-details">
+                                    <p>Privacy policy text is processed locally in your browser</p>
+                                </div>
+                            </div>
+                            <div class="data-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="data-node api">
+                                <i class="fas fa-brain"></i>
+                                <span>OpenAI API</span>
+                                <div class="data-details">
+                                    <p>Only policy text sent for summary generation</p>
+                                </div>
+                            </div>
+                            <div class="data-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="data-node breach">
+                                <i class="fas fa-search"></i>
+                                <span>Breach Check</span>
+                                <div class="data-details">
+                                    <p>Only domain names checked for breaches</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <h3 class="text-xl font-semibold mb-2">Types of Data Processed:</h3>
+                            <ul class="data-list">
+                                <li>
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    Page Content (Locally Processed)
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    OpenAI API Requests (No PII)
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    Domain Names for Breach Checking
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Storage Section -->
+                <div class="policy-section" data-aos="fade-up">
+                    <div class="policy-header" onclick="toggleSection(this)">
+                        <div class="policy-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h2>3. Data Storage and Retention</h2>
+                        <div class="policy-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="policy-content">
+                        <div class="storage-visualization">
+                            <div class="storage-type local">
+                                <i class="fas fa-browser"></i>
+                                <h4>Browser Storage</h4>
+                                <ul>
+                                    <li>User preferences</li>
+                                    <li>Theme settings</li>
+                                </ul>
+                            </div>
+                            <div class="storage-type cloud crossed">
+                                <i class="fas fa-cloud"></i>
+                                <h4>Cloud Storage</h4>
+                                <div class="crossed-text">No cloud storage used</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third-Party Services Section -->
+                <div class="policy-section" data-aos="fade-up">
+                    <div class="policy-header" onclick="toggleSection(this)">
+                        <div class="policy-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h2>4. Third-Party Services</h2>
+                        <div class="policy-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="policy-content">
+                        <div class="services-grid">
+                            <div class="service-card">
+                                <img src="openai.png" alt="OpenAI Logo" class="service-logo">
+                                <h4>OpenAI API</h4>
+                                <p>AI-powered summaries and analysis</p>
+                                <div class="service-details">
+                                    <ul>
+                                        <li><i class="fas fa-check text-green-400"></i> Privacy policy analysis</li>
+                                        <li><i class="fas fa-check text-green-400"></i> Risk assessment</li>
+                                        <li><i class="fas fa-check text-green-400"></i> User-friendly summaries</li>
+                                    </ul>
+                                </div>
+                                <a href="https://openai.com/policies" target="_blank" class="service-link">View OpenAI's Policy</a>
+                            </div>
+                            <div class="service-card">
+                                <img src="pawned.webp" alt="HaveIBeenPwned Logo" class="service-logo hibp-logo">
+                                <h4>HaveIBeenPwned</h4>
+                                <p>Data breach checking service</p>
+                                <div class="service-details">
+                                    <p class="text-sm text-gray-400 mb-4">We only use domain names to check for historical breaches. No personal data or credentials are shared with this service.</p>
+                                    <ul>
+                                        <li><i class="fas fa-check text-green-400"></i> Domain-only queries</li>
+                                        <li><i class="fas fa-check text-green-400"></i> Public breach history</li>
+                                        <li><i class="fas fa-check text-green-400"></i> No personal data shared</li>
+                                    </ul>
+                                </div>
+                                <a href="https://haveibeenpwned.com/Privacy" target="_blank" class="service-link">View HIBP's Policy</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Rights Section -->
+                <div class="policy-section" data-aos="fade-up">
+                    <div class="policy-header" onclick="toggleSection(this)">
+                        <div class="policy-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h2>5. User Rights</h2>
+                        <div class="policy-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="policy-content">
+                        <div class="rights-grid">
+                            <div class="right-card">
+                                <i class="fas fa-eye"></i>
+                                <h4>Access Rights</h4>
+                                <p>Since we don't store personal data, there's no need to request access to your data. All processing happens locally in your browser.</p>
+                            </div>
+                            <div class="right-card">
+                                <i class="fas fa-eraser"></i>
+                                <h4>Right to Erasure</h4>
+                                <p>Simply uninstall the extension to remove all local data. No server-side data deletion is necessary as we don't store any user data.</p>
+                            </div>
+                            <div class="right-card">
+                                <i class="fas fa-sliders-h"></i>
+                                <h4>Control & Settings</h4>
+                                <p>Customize the extension's behavior through the settings panel, including AI analysis preferences and notification options.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Children's Privacy Section -->
+                <div class="policy-section" data-aos="fade-up">
+                    <div class="policy-header" onclick="toggleSection(this)">
+                        <div class="policy-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h2>6. Children's Privacy</h2>
+                        <div class="policy-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="policy-content">
+                        <div class="children-privacy-content">
+                            <div class="alert-box">
+                                <i class="fas fa-exclamation-triangle text-yellow-400"></i>
+                                <p>Safe Surf is not intended for use by children under the age of 13.</p>
+                            </div>
+                            <div class="policy-details">
+                                <ul class="policy-list">
+                                    <li>
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>We do not knowingly collect data from children</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Parents should supervise children's online activities</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Contact us immediately if you believe we have inadvertently collected data from a child</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Security Section -->
+                <div class="policy-section" data-aos="fade-up">
+                    <div class="policy-header" onclick="toggleSection(this)">
+                        <div class="policy-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h2>7. Data Security</h2>
+                        <div class="policy-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="policy-content">
+                        <div class="security-measures">
+                            <div class="security-card">
+                                <div class="security-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h4>Local Processing</h4>
+                                <p>Content analysis happens directly in your browser</p>
+                            </div>
+                            <div class="security-card">
+                                <div class="security-icon">
+                                    <i class="fas fa-key"></i>
+                                </div>
+                                <h4>API Security</h4>
+                                <p>Secure API key management with scoped access</p>
+                            </div>
+                            <div class="security-card">
+                                <div class="security-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <h4>CSP Headers</h4>
+                                <p>Content-Security-Policy enforced in extension manifest</p>
+                            </div>
+                            <div class="security-card">
+                                <div class="security-icon">
+                                    <i class="fas fa-user-lock"></i>
+                                </div>
+                                <h4>Minimal Permissions</h4>
+                                <p>Only requests necessary permissions for core functionality</p>
+                            </div>
+                        </div>
+                        <div class="security-practices mt-6">
+                            <h4 class="text-xl font-semibold mb-4">Best Practices Implementation</h4>
+                            <div class="practices-grid">
+                                <div class="practice-item">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>Regular security audits and updates</span>
+                                </div>
+                                <div class="practice-item">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>Secure communication protocols</span>
+                                </div>
+                                <div class="practice-item">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>Data minimization principle</span>
+                                </div>
+                                <div class="practice-item">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>Transparent privacy practices</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Changes to Policy Section -->
+                <div class="policy-section" data-aos="fade-up">
+                    <div class="policy-header" onclick="toggleSection(this)">
+                        <div class="policy-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <h2>8. Changes to This Policy</h2>
+                        <div class="policy-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="policy-content">
+                        <div class="policy-updates">
+                            <div class="update-info">
+                                <p class="mb-4">We may update this policy occasionally. Any changes will be reflected with a revised effective date at the top. Significant updates will be communicated via:</p>
+                                <ul class="update-channels">
+                                    <li>
+                                        <i class="fab fa-chrome"></i>
+                                        <span>Chrome Web Store listing</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-bell"></i>
+                                        <span>Extension update notifications</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-clipboard-list"></i>
+                                        <span>Change log in the extension</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="version-history mt-6">
+                                <h4 class="text-xl font-semibold mb-4">Recent Updates</h4>
+                                <div class="version-timeline">
+                                    <div class="version-item">
+                                        <div class="version-date">May 20, 2024</div>
+                                        <div class="version-details">
+                                            <h5>Initial Release</h5>
+                                            <p>First public version of the privacy policy</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TL;DR Summary Section -->
+                <div class="policy-section" data-aos="fade-up">
+                    <div class="policy-header" onclick="toggleSection(this)">
+                        <div class="policy-icon">
+                            <i class="fas fa-list-alt"></i>
+                        </div>
+                        <h2>9. TL;DR Summary</h2>
+                        <div class="policy-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="policy-content">
+                        <div class="summary-cards">
+                            <div class="summary-card">
+                                <i class="fas fa-database-slash"></i>
+                                <h4>No Data Collection</h4>
+                                <p>We don't collect or store any personal data</p>
+                            </div>
+                            <div class="summary-card">
+                                <i class="fas fa-laptop-code"></i>
+                                <h4>Local Processing</h4>
+                                <p>All analysis happens in your browser</p>
+                            </div>
+                            <div class="summary-card">
+                                <i class="fas fa-brain"></i>
+                                <h4>OpenAI Integration</h4>
+                                <p>Privacy-focused AI analysis without PII</p>
+                            </div>
+                            <div class="summary-card">
+                                <i class="fas fa-shield-check"></i>
+                                <h4>Security First</h4>
+                                <p>Best practices for your protection</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="policy-section" data-aos="fade-up">
+                    <div class="policy-header" onclick="toggleSection(this)">
+                        <div class="policy-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h2>10. Contact Us</h2>
+                        <div class="policy-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="policy-content">
+                        <div class="contact-card">
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>safuvan@example.com</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-user"></i>
+                                    <span>Developer: Safuvan</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Location: Canada</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fab fa-github"></i>
+                                    <a href="#" target="_blank">GitHub Repository</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400">© 2024 Safe Surf. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- Add jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Toggle policy sections
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.policy-toggle i');
+            
+            content.classList.toggle('active');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
+
+        // Download PDF function
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Show loading state
+            const downloadBtn = document.querySelector('.feature-btn');
+            const originalText = downloadBtn.innerHTML;
+            downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Generating PDF...';
+
+            // PDF styling
+            const styles = {
+                header: { fontSize: 20, color: [230, 57, 70] },  // Red
+                subheader: { fontSize: 16, color: [50, 50, 50] },
+                normal: { fontSize: 12, color: [0, 0, 0] },
+                small: { fontSize: 10, color: [100, 100, 100] }
+            };
+
+            let y = 20; // Starting y position
+            const margin = 20;
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const contentWidth = pageWidth - (margin * 2);
+
+            // Helper function to add text with proper wrapping
+            function addWrappedText(text, y, style) {
+                doc.setFontSize(style.fontSize);
+                doc.setTextColor(...style.color);
+                const lines = doc.splitTextToSize(text, contentWidth);
+                doc.text(lines, margin, y);
+                return y + (lines.length * style.fontSize * 0.352778); // Convert pt to mm
+            }
+
+            // Helper function to add section
+            function addSection(title, content) {
+                // Check if we need a new page
+                if (y > doc.internal.pageSize.getHeight() - 40) {
+                    doc.addPage();
+                    y = 20;
+                }
+
+                // Add section title
+                y = addWrappedText(title, y, styles.subheader);
+                y += 5;
+
+                // Add content
+                if (Array.isArray(content)) {
+                    content.forEach(item => {
+                        y = addWrappedText('• ' + item, y, styles.normal);
+                        y += 3;
+                    });
+                } else {
+                    y = addWrappedText(content, y, styles.normal);
+                }
+                y += 10;
+            }
+
+            // Title
+            y = addWrappedText('Safe Surf Privacy Policy', y, styles.header);
+            y += 5;
+            y = addWrappedText('Generated on: ' + new Date().toLocaleDateString(), y, styles.small);
+            y += 15;
+
+            // Overview
+            addSection('1. Overview', document.querySelector('.policy-section:nth-child(1) p').textContent);
+
+            // Data Collection
+            addSection('2. Data We Collect', [
+                'Page Content: Privacy policy text is processed locally in your browser',
+                'OpenAI API: Only policy text sent for summary generation, no personal data included',
+                'Domain Names: Only used for checking historical breaches through HaveIBeenPwned'
+            ]);
+
+            // Data Storage
+            addSection('3. Data Storage and Retention', [
+                'All data is processed locally in your browser',
+                'User preferences and theme settings stored in browser storage only',
+                'No cloud storage or server-side data retention'
+            ]);
+
+            // Third-Party Services
+            addSection('4. Third-Party Services', [
+                'OpenAI API: Used for privacy policy analysis and risk assessment',
+                'HaveIBeenPwned: Only domain names are checked for historical breaches',
+                'No personal data is shared with third parties'
+            ]);
+
+            // User Rights
+            addSection('5. User Rights', [
+                'Access Rights: No need to request data access as all processing is local',
+                'Right to Erasure: Uninstall extension to remove all local data',
+                'Control & Settings: Customize extension behavior through settings panel'
+            ]);
+
+            // Children's Privacy
+            addSection('6. Children\'s Privacy', [
+                'Not intended for use by children under 13',
+                'No knowing collection of children\'s data',
+                'Parents should supervise children\'s online activities'
+            ]);
+
+            // Data Security
+            addSection('7. Data Security', [
+                'Local processing for enhanced privacy',
+                'Secure API key management with scoped access',
+                'Content-Security-Policy enforcement',
+                'Minimal permission requirements'
+            ]);
+
+            // Changes to Policy
+            addSection('8. Changes to This Policy', [
+                'Updates communicated via Chrome Web Store listing',
+                'Extension update notifications',
+                'Change log maintained in extension'
+            ]);
+
+            // TL;DR Summary
+            addSection('9. TL;DR Summary', [
+                'No collection or storage of personal data',
+                'All analysis happens locally in your browser',
+                'Privacy-focused AI analysis without PII',
+                'Security-first approach with best practices'
+            ]);
+
+            // Contact Information
+            addSection('10. Contact Us', [
+                'Email: safuvan@example.com',
+                'Developer: Safuvan',
+                'Location: Canada'
+            ]);
+
+            // Add page numbers
+            const pageCount = doc.internal.getNumberOfPages();
+            for (let i = 1; i <= pageCount; i++) {
+                doc.setPage(i);
+                doc.setFontSize(10);
+                doc.setTextColor(150, 150, 150);
+                doc.text('Page ' + i + ' of ' + pageCount, margin, doc.internal.pageSize.getHeight() - 10);
+                doc.text('Safe Surf Extension', pageWidth - margin - 40, doc.internal.pageSize.getHeight() - 10, { align: 'right' });
+            }
+
+            // Save the PDF
+            doc.save('SafeSurf-Privacy-Policy.pdf');
+
+            // Reset button state
+            downloadBtn.innerHTML = originalText;
+        }
+    </script>
+</body>
+</html> 

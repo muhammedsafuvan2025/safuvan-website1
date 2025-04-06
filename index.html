@@ -53,9 +53,26 @@
             <img src="logo.PNG" alt="Safe Surf Logo" class="w-32 h-32 mx-auto mb-6" data-aos="zoom-in" data-aos-delay="300">
             <h1 class="text-5xl md:text-7xl font-bold mb-6 text-gradient">Safe Surf Extension</h1>
             <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Understand website privacy policies at a glance with AI-powered scanning and analysis</p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#features" class="btn-primary">Explore Features</a>
-                <a href="#download" class="btn-secondary">Download Now</a>
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="feature-btn-wrapper" data-aos="fade-up" data-aos-delay="200">
+                    <a href="#features" class="feature-btn">
+                        <i class="fas fa-compass mr-2"></i>
+                        Explore Features
+                        <span class="btn-glow"></span>
+                    </a>
+                </div>
+                <div class="feature-btn-wrapper" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-btn coming-soon">
+                        <i class="fas fa-rocket mr-2"></i>
+                        Launching Soon
+                        <div class="launch-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span class="btn-glow"></span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
@@ -401,186 +418,191 @@
                         <div class="code-content active" id="detection-code">
                             <pre><code>
 // Privacy Policy Detection Module
-class PrivacyDetector {
-  constructor() {
-    this.patterns = [
-      /privacy\s+policy/i,
-      /terms\s+(of\s+service|and\s+conditions)/i,
-      /data\s+(collection|usage|processing)/i
-    ];
-    this.confidence = 0;
-    console.log("Privacy Detector initialized");
-  }
-
-  async scanPage() {
-    const bodyText = document.body.innerText;
+function isPrivacyOrTermsPage() {
+  try {
     const url = window.location.href;
+    console.log("Checking URL for privacy/terms page:", url);
+    
+    // Extract hostname
+    let hostname;
+    try {
+      const urlObj = new URL(url);
+      hostname = urlObj.hostname;
+    } catch (e) {
+      console.error("Error parsing URL:", e);
+      hostname = "";
+    }
+    
+    // Privacy policy URL patterns (strong positive indicators)
+    const privacyUrlPatterns = [
+      /privacy[-_]?policy/i,
+      /privacy[-_]?notice/i,
+      /\/privacy\/?$/i,
+      /\/legal\/privacy/i,
+      /\/policies\/privacy/i,
+      /\/terms[-_]?(of[-_]?service|and[-_]?conditions)/i,
+      /\/terms\/?$/i,
+      /\/tos\/?$/i
+    ];
     
     // Check URL patterns
-    if (url.includes("privacy") || 
-        url.includes("terms")) {
-      this.confidence += 0.4;
+    if (privacyUrlPatterns.some(pattern => pattern.test(url))) {
+      console.log("Privacy URL pattern matched");
+      return true;
     }
     
-    // Check content patterns
-    for (const pattern of this.patterns) {
-      if (pattern.test(bodyText)) {
-        this.confidence += 0.2;
-        console.log(`Matched pattern: ${pattern}`);
+    // Check page title
+    const titlePatterns = [
+      /privacy\s+policy/i,
+      /privacy\s+notice/i,
+      /terms\s+(of\s+service|and\s+conditions|of\s+use)/i
+    ];
+    
+    if (titlePatterns.some(pattern => pattern.test(document.title))) {
+      console.log("Title matched:", document.title);
+      return true;
+    }
+    
+    // Content fingerprinting (check for privacy-specific phrases)
+    const privacyPhrases = [
+      /we collect (the following|your|personal) (information|data)/i,
+      /information we collect/i,
+      /we use cookies and (similar technologies|tracking)/i,
+      /how we use your (information|data)/i,
+      /how we share your (information|data)/i,
+      /your privacy (rights|choices)/i
+    ];
+    
+    const contentText = document.body.textContent;
+    let privacyPhraseCount = 0;
+    
+    privacyPhrases.forEach(pattern => {
+      if (pattern.test(contentText)) {
+        privacyPhraseCount++;
       }
-    }
+    });
     
-    if (this.confidence > 0.5) {
-      return this.extractPolicyText();
-    }
+    return privacyPhraseCount >= 3;
     
-    return null;
-  }
-  
-  extractPolicyText() {
-    // Extract main content
-    const mainContent = this.findMainContentElement();
-    return {
-      text: mainContent.innerText,
-      html: mainContent.innerHTML,
-      confidence: this.confidence
-    };
+  } catch (e) {
+    console.error("Error in privacy page detection:", e);
+    return false;
   }
 }
-
-// Initialize and run detector
-const detector = new PrivacyDetector();
-detector.scanPage().then(result => {
-  if (result) {
-    chrome.runtime.sendMessage({
-      action: "POLICY_DETECTED",
-      payload: result
-    });
-  }
-});
                             </code></pre>
                         </div>
                         <div class="code-content" id="analysis-code">
                             <pre><code>
-// Privacy Risk Analysis Module
-class PrivacyAnalyzer {
-  constructor() {
-    this.riskTerms = {
-      high: [
-        "sell your data", "share with third parties",
-        "targeted advertising", "location tracking"
-      ],
-      medium: [
-        "collect personal information", "store your data",
-        "cookies", "behavioral analysis"
-      ],
-      low: [
-        "anonymous statistics", "aggregate data",
-        "improve service", "troubleshooting"
-      ]
-    };
+// Risk Detection Engine
+const RISK_PATTERNS = [
+  // Data Collection
+  {
+    name: "Data Collection",
+    regex: new RegExp(buildRegex(["collect", "gather", "obtain"]) + 
+      "\\s(personal data|location info|browsing history|device ID)", "gi"),
+    example: "Collects device identifiers"
+  },
+  // Third-Party Sharing
+  {
+    name: "Third-Party Sharing",
+    regex: /\b(share(s|ing)? with (partners|third[- ]parties)|data brokers?|affiliates)\b/gi,
+    example: "Shares data with marketing partners"
+  },
+  // Data Retention
+  {
+    name: "Data Retention",
+    regex: /\b(retain(s|ing)? (data|logs) (indefinitely|for \d+ (years?|months?)))\b/gi,
+    example: "Retains payment info for 5 years"
+  },
+  // Tracking Technologies
+  {
+    name: "Tracking Technologies",
+    regex: /\b(cookies?|pixels?|trackers?|beacons?|fingerprinting)\b/gi,
+    example: "Uses cookies and tracking pixels"
   }
+];
 
-  async analyzePolicy(policyText) {
-    const sentences = this.splitIntoSentences(policyText);
-    const risks = {
-      high: [],
-      medium: [],
-      low: []
+function detectRisks(text) {
+  try {
+    const results = {
+      matches: [],
+      count: 0,
+      level: 'low'
     };
-    
-    // Analyze each sentence for risk terms
-    for (const sentence of sentences) {
-      const sentenceLower = sentence.toLowerCase();
-      
-      // Check for high risks
-      for (const term of this.riskTerms.high) {
-        if (sentenceLower.includes(term)) {
-          risks.high.push({
-            sentence,
-            term,
-            index: sentenceLower.indexOf(term)
-          });
-        }
+
+    RISK_PATTERNS.forEach(pattern => {
+      const matches = [...text.matchAll(pattern.regex)];
+      if (matches.length) {
+        results.matches.push({
+          name: pattern.name,
+          count: matches.length,
+          examples: [...new Set(matches.map(m => m[0]))].slice(0, 3)
+        });
+        results.count += matches.length;
       }
-      
-      // Similar checks for medium and low risks...
-    }
-    
-    // Calculate overall risk score
-    const riskScore = this.calculateRiskScore(risks);
-    
-    return {
-      risks,
-      riskScore,
-      riskLevel: this.getRiskLevel(riskScore)
-    };
-  }
-  
-  splitIntoSentences(text) {
-    return text.split(/[.!?]+/)
-      .map(s => s.trim())
-      .filter(s => s.length > 10);
-  }
-  
-  calculateRiskScore(risks) {
-    return (risks.high.length * 10) + 
-           (risks.medium.length * 3) + 
-           (risks.low.length * 1);
+    });
+
+    results.level = 
+      results.count >= CONFIG.riskThresholds.high ? 'high' :
+      results.count >= CONFIG.riskThresholds.medium ? 'medium' : 'low';
+
+    return results;
+  } catch (e) {
+    console.error("Error detecting risks:", e);
+    return { matches: [], count: 0, level: 'unknown' };
   }
 }
                             </code></pre>
                         </div>
                         <div class="code-content" id="summary-code">
                             <pre><code>
-// OpenAI Summary Generator Module
-class SummaryGenerator {
-  constructor(apiKey) {
-    this.apiKey = apiKey;
-    this.endpoint = "https://api.openai.com/v1/chat/completions";
-  }
+// AI Analysis Module
+async function getAISummary(text) {
+  try {
+    const maxLength = 25000;
+    const trimmedText = text.substring(0, maxLength);
+    
+    // Use the API to get a summary
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [{
+          role: "system",
+          content: `Analyze this privacy policy or terms and conditions and provide structured summary focusing on:
+          1. **Data Collection**: Specific types of data collected
+          2. **Processing Purpose**: Explicit purposes stated for data usage
+          3. **Third Parties**: Named entities receiving data
+          4. **Retention Period**: Specific durations mentioned
+          5. **User Rights**: Detailed opt-out/delete mechanisms
+          6. **Security**: Mentioned security measures
+          7. **WARNING DETECTED**: Most concerning aspects
+          8. **COOKIES**: Cookie usage and tracking details
+          Format with clear headings and bullet points.
+          Be technical and specific about potential threats.`
+        }, {
+          role: "user",
+          content: trimmedText
+        }],
+        max_tokens: 1200,
+        temperature: 0.3
+      })
+    });
 
-  async generateSummary(policyText, risks) {
-    const prompt = this.createPrompt(policyText, risks);
-    
-    try {
-      const response = await fetch(this.endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${this.apiKey}`
-        },
-        body: JSON.stringify({
-          model: "gpt-3.5-turbo",
-          messages: [{
-            role: "system",
-            content: "You analyze privacy policies and summarize key points of concern in clear language."
-          }, {
-            role: "user",
-            content: prompt
-          }],
-          max_tokens: 150,
-          temperature: 0.7
-        })
-      });
-      
-      const data = await response.json();
-      return data.choices[0].message.content;
-    } catch (error) {
-      console.error("Error generating summary:", error);
-      return "Unable to generate summary at this time.";
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(`API error: ${errorData.error?.message || "Unknown error"}`);
     }
-  }
-  
-  createPrompt(policyText, risks) {
-    return `Please analyze this privacy policy and provide a concise summary 
-    focusing on concerns regarding data collection, sharing, and user privacy.
     
-    Policy text: "${policyText.substring(0, 1000)}..."
-    
-    Identified risks: ${JSON.stringify(risks)}
-    
-    Provide a brief summary (2-3 sentences) highlighting the most concerning aspects.`;
+    const data = await response.json();
+    return data.choices[0].message.content;
+  } catch (error) {
+    console.error("AI Analysis Error:", error);
+    throw new Error(`AI Analysis Failed: ${error.message}`);
   }
 }
                             </code></pre>
@@ -1629,12 +1651,17 @@ class SummaryGenerator {
     <!-- Download Section -->
     <section id="download" class="py-20 bg-gray-800">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="section-title" data-aos="fade-up">Ready to Understand Privacy Policies?</h2>
-            <p class="section-subtitle mb-12" data-aos="fade-up" data-aos-delay="100">Get Safe Surf Extension today and never be confused by legal jargon again</p>
+            <h2 class="section-title" data-aos="fade-up">Excited to Try Safe Surf?</h2>
+            <p class="section-subtitle mb-12" data-aos="fade-up" data-aos-delay="100">Our extension is currently in final development stages</p>
             
-            <a href="#" class="download-btn" data-aos="zoom-in" data-aos-delay="200">
-                Download Now
-            </a>
+            <div class="coming-soon-container" data-aos="zoom-in" data-aos-delay="200">
+                <div class="coming-soon-badge">
+                    <i class="fas fa-clock mr-2"></i>
+                    Coming Soon
+                </div>
+                <p class="text-gray-400 mt-4">We're putting the finishing touches on Safe Surf to ensure the best possible experience for our users.</p>
+                <p class="text-gray-400 mt-2">Stay tuned for the release!</p>
+            </div>
         </div>
     </section>
 
@@ -1647,11 +1674,16 @@ class SummaryGenerator {
                     <p class="text-gray-400">© 2023 Safe Surf Extension. All rights reserved.</p>
                 </div>
                 
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <div class="flex flex-col items-center md:items-end">
+                    <div class="mb-4">
+                        <a href="privacy.html" class="text-gray-400 hover:text-red-600 transition-colors">Privacy Policy</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
                 </div>
             </div>
             
